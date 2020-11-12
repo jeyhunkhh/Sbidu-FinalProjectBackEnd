@@ -1,0 +1,51 @@
+﻿
+<div class="user-menu">
+    <div class="user">
+        <div class="image">
+            <img src="assets/img/user.png" alt="">
+            <label for="user-photo">
+                <i class="fas fa-pencil-alt"></i>
+            </label>
+            <input type="file" id="user-photo" class="d-none">
+        </div>
+        <div class="content">
+            <h4>
+                Percy Reed
+            </h4>
+            <span>john@gmail.com</span>
+        </div>
+    </div>
+    <ul class="menu">
+        <li>
+            <a asp-controller="mybids" asp-action="index" class="active">
+                <i class="flaticon-hammer"></i>
+                My Bids
+            </a>
+        </li>
+        <li>
+            <a asp-controller="personalprofile" asp-action="index">
+                <i class="flaticon-settings"></i>
+                Personal Profile
+            </a>
+        </li>
+        <li>
+            <a asp-controller="winningbids" asp-action="index">
+                <i class="flaticon-best-seller"></i>
+                Winning Bids
+            </a>
+        </li>
+        <li>
+            <a asp-controller="favorites" asp-action="index">
+                <i class="far fa-star"></i>
+                My Favorites
+            </a>
+        </li>
+        <li>
+            <a asp-controller="referrals" asp-action="index">
+                <i class="flaticon-shake-hand"></i>
+                Referrals
+            </a>
+        </li>
+
+    </ul>
+</div>
