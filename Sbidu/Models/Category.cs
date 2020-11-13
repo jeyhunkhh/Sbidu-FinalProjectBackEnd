@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sbidu.Models
 {
@@ -14,7 +13,14 @@ namespace Sbidu.Models
         public string Name { get; set; }
         [Required]
         [MaxLength(100)]
+        public string Type { get; set; }
+        [Required]
+        [MaxLength(100)]
         public string Icon { get; set; }
+        [MaxLength(100)]
+        public string Photo { get; set; }
+        [NotMapped]
+        public IFormFile Upload { get; set; }
         public ICollection<AuctionProduct> AuctionProducts { get; set; }
 
     }

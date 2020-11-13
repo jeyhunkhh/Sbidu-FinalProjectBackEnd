@@ -9,15 +9,15 @@ namespace Sbidu.Models
         public int Id { get; set; }
         [Required]
         [MaxLength(50)]
-        public int Title { get; set; }
+        public string Title { get; set; }
         [Required]
         [MaxLength(50)]
         public string Subtitle { get; set; }
         [Required]
         [MaxLength(300)]
-        public int Text { get; set; }
+        public string Text { get; set; }
         [MaxLength(300)]
-        public int Photo { get; set; }
+        public string Photo { get; set; }
         [NotMapped]
         public IFormFile Upload { get; set; }
     }

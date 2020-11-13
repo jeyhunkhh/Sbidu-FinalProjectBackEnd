@@ -17,6 +17,15 @@ namespace Sbidu.Models
         [Required]
         [MaxLength(1000)]
         public string About { get; set; }
+        [Required]
+        [Column(TypeName = "datetime")]
+        public DateTime EndDate { get; set; }
+        [Required]
+        public int BuyNowPrice { get; set; }
+        [Required]
+        public int StartPrice { get; set; }
+        [Required]
+        public bool Popular { get; set; }
         [NotMapped]
         public List<IFormFile> Upload { get; set; }
         public int CategoryId { get; set; }

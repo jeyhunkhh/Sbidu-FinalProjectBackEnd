@@ -15,6 +15,7 @@ namespace Sbidu.Data
         public DbSet<HomePoster> HomePosters { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Setting> Settings { get; set; }
 
     }
 }

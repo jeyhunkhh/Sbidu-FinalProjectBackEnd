@@ -1,34 +1,33 @@
-﻿@section Styles{
+﻿@model HomeViewModel
+@section Styles{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-
 }
+
 <!-- Bannar -->
-<section id="banner" style="background-image: url(assets/img/banner-bg-1.png);">
+<section id="banner" style="background-image: url(uploads/banner-bg-1.png);">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="banner-content">
-                    <h5>Next Generation Auction</h5>
-                    <h1>
-                        Find Your
-                        <span>Next Deal!</span>
+                    <h5>@Model.HomePoster.Subtitle</h5>
+                    <h1 style="width:500px">
+                        @Model.HomePoster.Title
                     </h1>
                     <p>
-                        Online Auction is where everyone goes to shop, sell and give, while discovering variety
-                        and affordability.
+                        @Model.HomePoster.Text
                     </p>
                     <a href="#">GET STARTED</a>
                 </div>
             </div>
             <div class="col-lg-6">
-                <img src="assets/img/banner-1.png" alt="">
+                <img src="~/uploads/@Model.HomePoster.Photo" alt="">
             </div>
         </div>
     </div>
     <div class="banner-bottom-image d-none d-lg-block">
-        <img src="assets/img/banner-shape.png" alt="" class="img-fluid">
+        <img src="~/uploads/banner-shape.png" alt="" class="img-fluid">
     </div>
 </section>
 <!-- End Banner -->
@@ -41,54 +40,15 @@
             </div>
             <div class="col-lg-12 slider">
                 <div class="owl-carousel owl-theme ">
-                    <div class="item">
-                        <a href="#">
-                            <img src="assets/img/catagory01.png" alt="">
-                            <span>Vehicles</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="assets/img/catagory02.png" alt="">
-                            <span>Jewelry</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="assets/img/catagory03.png" alt="">
-                            <span>Watches</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="assets/img/catagory04.png" alt="">
-                            <span>Electronics</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="assets/img/catagory05.png" alt="">
-                            <span>Sports</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="assets/img/catagory06.png" alt="">
-                            <span>Real Estate</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="assets/img/catagory07.png" alt="">
-                            <span>Arts</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#">
-                            <img src="assets/img/catagory08.png" alt="">
-                            <span>Coins</span>
-                        </a>
-                    </div>
+                    @foreach (var item in Model.Categories)
+                    {
+                        <div class="item">
+                            <a asp-controller="auction" asp-action="index">
+                                <img src="~/uploads/@item.Photo" alt="">
+                                <span>@item.Name</span>
+                            </a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -101,7 +61,7 @@
         <div class="row">
             <div class="col-lg-12 header d-flex justify-content-between">
                 <div class="title d-flex">
-                    <img src="assets/img/catagory01.png" alt="">
+                    <img src="~/uploads/catagory01.png" alt="">
                     <div class="text">
                         <h1>Vehicles</h1>
                         <p>We offer affordable Vehicles</p>
@@ -112,10 +72,10 @@
                 </div>
             </div>
         </div>
-        <partial name="_AuctionPoster" />
+        <vc:auction-poster-component id="@Model.Categories.Find(x=>x.Type == "Vehicles").Id"></vc:auction-poster-component>
     </div>
     <div class="car-bg">
-        <img src="assets/img/car-bg.png" alt="">
+        <img src="~/uploads/car-bg.png" alt="">
     </div>
 </section>
 <!-- End Car Auction -->
@@ -125,7 +85,7 @@
         <div class="row">
             <div class="col-lg-12 header d-flex justify-content-between">
                 <div class="title d-flex">
-                    <img src="assets/img/catagory02.png" alt="">
+                    <img src="~/uploads/catagory02.png" alt="">
                     <div class="text">
                         <h1>Jewelry</h1>
                         <p>Online jewelry auctions where you can bid now and save money</p>
@@ -136,10 +96,10 @@
                 </div>
             </div>
         </div>
-        <partial name="_AuctionPoster" />
+        <vc:auction-poster-component id="@Model.Categories.Find(x=>x.Type == "Jewelry").Id"></vc:auction-poster-component>
     </div>
     <div class="jewelry-bg">
-        <img src="assets/img/jwelry-bg.png" alt="">
+        <img src="~/uploads/jwelry-bg.png" alt="">
     </div>
 </section>
 <!-- End Jewelry Auction -->
@@ -150,7 +110,7 @@
         <div class="row">
             <div class="col-lg-12 header d-flex justify-content-between">
                 <div class="title d-flex">
-                    <img src="assets/img/catagory03.png" alt="">
+                    <img src="~/uploads/catagory03.png" alt="">
                     <div class="text">
                         <h1>Watches</h1>
                         <p>Shop for men & women designer brand watches</p>
@@ -161,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <partial name="_AuctionPoster" />
+        <vc:auction-poster-component id="@Model.Categories.Find(x=>x.Type == "Watches").Id"></vc:auction-poster-component>
     </div>
 </section>
 <!-- Emd Watches Auction -->
@@ -179,180 +139,43 @@
         </div>
         <div class="popular-products">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="popular-item d-flex">
-                        <div class="image">
-                            <a href="#">
-                                <img src="assets/img/popular-auction-1.jpg" alt="">
-                            </a>
-                            <a href="#" class="hammer">
-                                <i class="flaticon-hammer"></i>
-                            </a>
-                        </div>
-                        <div class="content text-center">
-                            <h5>
-                                <a href="#">Apple Macbook Pro Laptop</a>
-                            </h5>
-                            <div class="current-bid d-flex">
-                                <i class="flaticon-hammer"></i>
-                                <p class="d-flex flex-column">
-                                    Current Bid
-                                    <span>$876.00</span>
+                @foreach (var item in Model.AuctionProducts.Where(x => x.Popular == true).ToList())
+                {
+                    <div class="col-lg-6">
+                        <div class="popular-item d-flex">
+                            <div class="image">
+                                <a asp-controller="auctiondetails" asp-action="index">
+                                    <img src="~/uploads/@item.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
+                                </a>
+                                <a asp-controller="auctiondetails" asp-action="index" class="hammer">
+                                    <i class="flaticon-hammer"></i>
+                                </a>
+                            </div>
+                            <div class="content text-center">
+                                <h5>
+                                    <a href="#">@item.Name</a>
+                                </h5>
+                                <div class="current-bid d-flex">
+                                    <i class="flaticon-hammer"></i>
+                                    <p class="d-flex flex-column">
+                                        Current Bid
+                                        <span>$876.00</span>
+                                    </p>
+                                </div>
+                                <p class="total-bid">
+                                    Total Bids :
+                                    <span>130 Bids</span>
                                 </p>
                             </div>
-                            <p class="total-bid">
-                                Total Bids :
-                                <span>130 Bids</span>
-                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="popular-item d-flex">
-                        <div class="image">
-                            <a href="#">
-                                <img src="assets/img/popular-auction-2.jpg" alt="">
-                            </a>
-                            <a href="#" class="hammer">
-                                <i class="flaticon-hammer"></i>
-                            </a>
-                        </div>
-                        <div class="content text-center">
-                            <h5>
-                                <a href="#">Canon EOS Rebel T6I Digital Camera</a>
-                            </h5>
-                            <div class="current-bid d-flex">
-                                <i class="flaticon-hammer"></i>
-                                <p class="d-flex flex-column">
-                                    Current Bid
-                                    <span>$876.00</span>
-                                </p>
-                            </div>
-                            <p class="total-bid">
-                                Total Bids :
-                                <span>130 Bids</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="popular-item d-flex">
-                        <div class="image">
-                            <a href="#">
-                                <img src="assets/img/popular--auction-3.jpg" alt="">
-                            </a>
-                            <a href="#" class="hammer">
-                                <i class="flaticon-hammer"></i>
-                            </a>
-                        </div>
-                        <div class="content text-center">
-                            <h5>
-                                <a href="#">14k Gold Geneve Watch,24.5g</a>
-                            </h5>
-                            <div class="current-bid d-flex">
-                                <i class="flaticon-hammer"></i>
-                                <p class="d-flex flex-column">
-                                    Current Bid
-                                    <span>$876.00</span>
-                                </p>
-                            </div>
-                            <p class="total-bid">
-                                Total Bids :
-                                <span>130 Bids</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="popular-item d-flex">
-                        <div class="image">
-                            <a href="#">
-                                <img src="assets/img/popular-auction-4.jpg" alt="">
-                            </a>
-                            <a href="#" class="hammer">
-                                <i class="flaticon-hammer"></i>
-                            </a>
-                        </div>
-                        <div class="content text-center">
-                            <h5>
-                                <a href="#">14K White Gold 185.60 Grams 5.95 Carats</a>
-                            </h5>
-                            <div class="current-bid d-flex">
-                                <i class="flaticon-hammer"></i>
-                                <p class="d-flex flex-column">
-                                    Current Bid
-                                    <span>$876.00</span>
-                                </p>
-                            </div>
-                            <p class="total-bid">
-                                Total Bids :
-                                <span>130 Bids</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="popular-item d-flex">
-                        <div class="image">
-                            <a href="#">
-                                <img src="assets/img/popular-auction-5.jpg" alt="">
-                            </a>
-                            <a href="#" class="hammer">
-                                <i class="flaticon-hammer"></i>
-                            </a>
-                        </div>
-                        <div class="content text-center">
-                            <h5>
-                                <a href="#">2009 Toyota Prius (Medford, NY 11763)</a>
-                            </h5>
-                            <div class="current-bid d-flex">
-                                <i class="flaticon-hammer"></i>
-                                <p class="d-flex flex-column">
-                                    Current Bid
-                                    <span>$876.00</span>
-                                </p>
-                            </div>
-                            <p class="total-bid">
-                                Total Bids :
-                                <span>130 Bids</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="popular-item d-flex">
-                        <div class="image">
-                            <a href="#">
-                                <img src="assets/img/popular-auction-6.jpg" alt="">
-                            </a>
-                            <a href="#" class="hammer">
-                                <i class="flaticon-hammer"></i>
-                            </a>
-                        </div>
-                        <div class="content text-center">
-                            <h5>
-                                <a href="#">.6 Gram Pure Gold Nugget</a>
-                            </h5>
-                            <div class="current-bid d-flex">
-                                <i class="flaticon-hammer"></i>
-                                <p class="d-flex flex-column">
-                                    Current Bid
-                                    <span>$876.00</span>
-                                </p>
-                            </div>
-                            <p class="total-bid">
-                                Total Bids :
-                                <span>130 Bids</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
 
         </div>
     </div>
     <div class="popular-bg">
-        <img src="assets/img/popular-bg.png" alt="">
+        <img src="~/uploads/popular-bg.png" alt="">
     </div>
 </section>
 <!-- End Popular Auctions -->
@@ -362,7 +185,7 @@
         <div class="row">
             <div class="col-lg-12 header d-flex justify-content-between">
                 <div class="title d-flex">
-                    <img src="assets/img/catagory08.png" alt="">
+                    <img src="~/uploads/catagory08.png" alt="">
                     <div class="text">
                         <h1>Coins & Bullion</h1>
                         <p>Discover rare, foreign, & ancient coins that are worth collecting</p>
@@ -373,10 +196,10 @@
                 </div>
             </div>
         </div>
-        <partial name="_AuctionPoster" />
+        <vc:auction-poster-component id="@Model.Categories.Find(x=>x.Type == "Coins").Id"></vc:auction-poster-component>
     </div>
     <div class="coins-bg">
-        <img src="assets/img/coin-bg.png" alt="">
+        <img src="~/uploads/coin-bg.png" alt="">
     </div>
 </section>
 <!-- End Coins & Bullion -->
@@ -386,7 +209,7 @@
         <div class="row">
             <div class="col-lg-12 header d-flex justify-content-between">
                 <div class="title d-flex">
-                    <img src="assets/img/catagory06.png" alt="">
+                    <img src="~/uploads/catagory06.png" alt="">
                     <div class="text">
                         <h1>Real Estate</h1>
                         <p>Find auctions for Homes, Condos, Residential & Commercial Properties.</p>
@@ -431,7 +254,7 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="image">
-                                <img src="assets/img/realstate-auction-1.png" alt="">
+                                <img src="~/uploads/realstate-auction-1.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -469,7 +292,7 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="image">
-                                <img src="assets/img/realstate-auction-1.png" alt="">
+                                <img src="~/uploads/realstate-auction-1.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -507,7 +330,7 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="image">
-                                <img src="assets/img/realstate-auction-1.png" alt="">
+                                <img src="~/uploads/realstate-auction-1.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -545,7 +368,7 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="image">
-                                <img src="assets/img/realstate-auction-1.png" alt="">
+                                <img src="~/uploads/realstate-auction-1.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -583,7 +406,7 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="image">
-                                <img src="assets/img/realstate-auction-1.png" alt="">
+                                <img src="~/uploads/realstate-auction-1.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -593,7 +416,7 @@
         </div>
     </div>
     <div class="real-estate-bg">
-        <img src="assets/img/real-bg.png" alt="">
+        <img src="~/uploads/real-bg.png" alt="">
     </div>
 </section>
 <!-- End Real Estate -->
@@ -612,7 +435,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="item">
                     <div class="image">
-                        <img src="assets/img/how1.png" class="img-fluid" alt="">
+                        <img src="~/uploads/how1.png" class="img-fluid" alt="">
                     </div>
                     <div class="content">
                         <h3>Sign Up</h3>
@@ -623,7 +446,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="item">
                     <div class="image">
-                        <img src="assets/img/how2.png" class="img-fluid" alt="">
+                        <img src="~/uploads/how2.png" class="img-fluid" alt="">
                     </div>
                     <div class="content">
                         <h3>Bid</h3>
@@ -634,7 +457,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="item">
                     <div class="image">
-                        <img src="assets/img/how3.png" class="img-fluid" alt="">
+                        <img src="~/uploads/how3.png" class="img-fluid" alt="">
                     </div>
                     <div class="content">
                         <h3>Win</h3>

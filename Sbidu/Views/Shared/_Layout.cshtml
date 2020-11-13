@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sbidu - Bid And Auction HTML Template</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/font/flaticon.css" />
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="assets/img/favicon-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/font/flaticon.css" />
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="shortcut icon" href="~/uploads/favicon-logo.png" type="image/x-icon">
     @RenderSection("Styles", required: false)
     <script src="https://kit.fontawesome.com/5f8f97e3fd.js" crossorigin="anonymous"></script>
 </head>
@@ -21,61 +21,14 @@
     </section>
 
     <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="content d-flex justify-content-between align-items-center">
-                    <ul class="d-flex">
-                        <li>
-                            <a href="#" class="mr-3">
-                                <i class="fas fa-phone-alt"></i>
-                                <span>Customer Support</span>
-                            </a>
-                        </li>
-                        <li>
-                            <i class="fas fa-globe"></i>
-                            <select name="language" class="select-bar">
-                                <option value="en">En</option>
-                                <option value="az">Az</option>
-                                <option value="ru">Ru</option>
-                            </select>
-                        </li>
-                    </ul>
-                    <div class="my-account d-flex align-items-center">
-                        <a href="sing-in.html" class="login">Login</a>
-                        <button class="user-profile">
-                            <i class="flaticon-user"></i>
-                        </button>
-                        <ul class="list">
-                            <li>
-                                <a asp-controller="mybids" asp-action="index">
-                                    <i class="fas fa-user"></i>
-                                    Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-controller="personalprofile" asp-action="index">
-                                    <i class="fas fa-cogs"></i>
-                                    Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                    Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <vc:header-component></vc:header-component>
         <!-- Navbar -->
         <div class="header-bottom">
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <div class="logo">
                         <a class="navbar-brand" asp-controller="home" asp-action="index">
-                            <img src="assets/img/logo.png" alt="logo">
+                            <img src="~/uploads/logo.png" alt="logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -121,16 +74,16 @@
         @RenderBody()
     </main>
 
-    <footer style="background-image: url(assets/img/footer-bg.jpg);">
+    <footer style="background-image: url(uploads/footer-bg.jpg);">
         <div class="footer-bg">
-            <img src="assets/img/footer-top-shape.png" class="img-fluid" alt="">
+            <img src="~/uploads/footer-top-shape.png" class="img-fluid" alt="">
         </div>
         <div class="subscribe">
             <div class="container area">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="image">
-                            <img src="assets/img/newslater.png" class="img-fluid" alt="">
+                            <img src="~/uploads/newslater.png" class="img-fluid" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -148,148 +101,23 @@
                 </div>
             </div>
         </div>
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <h4>
-                                Auction Categories
-                            </h4>
-                            <ul>
-                                <li>
-                                    <a href="#">Ending Now</a>
-                                </li>
-                                <li>
-                                    <a href="#">Vehicles</a>
-                                </li>
-                                <li>
-                                    <a href="#">Watches</a>
-                                </li>
-                                <li>
-                                    <a href="#">Electronics</a>
-                                </li>
-                                <li>
-                                    <a href="#">Real Estate </a>
-                                </li>
-                                <li>
-                                    <a href="#">Jewelry</a>
-                                </li>
-                                <li>
-                                    <a href="#">Art</a>
-                                </li>
-                                <li>
-                                    <a href="#">Sports & Outdoor</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <h4>
-                                About Us
-                            </h4>
-                            <ul>
-                                <li>
-                                    <a href="#">About Sbidu</a>
-                                </li>
-                                <li>
-                                    <a href="#">Help</a>
-                                </li>
-                                <li>
-                                    <a href="#">Affiliates</a>
-                                </li>
-                                <li>
-                                    <a href="#">Jobs</a>
-                                </li>
-                                <li>
-                                    <a href="#">Press</a>
-                                </li>
-                                <li>
-                                    <a href="#">Our blog</a>
-                                </li>
-                                <li>
-                                    <a href="#">Collectors' portal</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <h4>
-                                We're Here to Help
-                            </h4>
-                            <ul>
-                                <li>
-                                    <a href="#">Your Account</a>
-                                </li>
-                                <li>
-                                    <a href="#">Safe and Secure</a>
-                                </li>
-                                <li>
-                                    <a href="#">Shipping Information</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">Help & FAQ</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <h4>
-                                Follow Us
-                            </h4>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fas fa-phone-alt"></i>
-                                        (646) 663-4575
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fas fa-blender-phone"></i>
-                                        (646) 968-0608
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fas fa-envelope-open-text"></i>
-                                        help@engotheme.com
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fas fa-location-arrow"></i>
-                                        1201 Broadway Suite
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <vc:footer-component></vc:footer-component>
         <div class="footer-bottom">
             <div class="container">
                 <div class="copyright">
-                    <img src="assets/img/logo.png" class="logo" alt="">
+                    <img src="~/uploads/logo.png" class="logo" alt="">
                     <ul class="d-flex">
                         <li>
-                            <img src="assets/img/paypal.png" alt="">
+                            <img src="~/uploads/paypal.png" alt="">
                         </li>
                         <li>
-                            <img src="assets/img/visa.png" alt="">
+                            <img src="~/uploads/visa.png" alt="">
                         </li>
                         <li>
-                            <img src="assets/img/discover.png" alt="">
+                            <img src="~/uploads/discover.png" alt="">
                         </li>
                         <li>
-                            <img src="assets/img/mastercard.png" alt="">
+                            <img src="~/uploads/mastercard.png" alt="">
                         </li>
                     </ul>
                     <p>
@@ -311,7 +139,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="~/js/main.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

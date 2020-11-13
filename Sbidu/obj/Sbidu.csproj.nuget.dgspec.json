@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ceyhun\\Desktop\\Sbidu\\Sbidu.csproj": {}
+    "C:\\Users\\Ceyhun\\Desktop\\Sbidu-FinalProjectBackEnd\\Sbidu\\Sbidu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ceyhun\\Desktop\\Sbidu\\Sbidu.csproj": {
+    "C:\\Users\\Ceyhun\\Desktop\\Sbidu-FinalProjectBackEnd\\Sbidu\\Sbidu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ceyhun\\Desktop\\Sbidu\\Sbidu.csproj",
+        "projectUniqueName": "C:\\Users\\Ceyhun\\Desktop\\Sbidu-FinalProjectBackEnd\\Sbidu\\Sbidu.csproj",
         "projectName": "Sbidu",
-        "projectPath": "C:\\Users\\Ceyhun\\Desktop\\Sbidu\\Sbidu.csproj",
+        "projectPath": "C:\\Users\\Ceyhun\\Desktop\\Sbidu-FinalProjectBackEnd\\Sbidu\\Sbidu.csproj",
         "packagesPath": "C:\\Users\\Ceyhun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ceyhun\\Desktop\\Sbidu\\obj\\",
+        "outputPath": "C:\\Users\\Ceyhun\\Desktop\\Sbidu-FinalProjectBackEnd\\Sbidu\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ceyhun\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,6 +53,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
             }
           },
           "imports": [
