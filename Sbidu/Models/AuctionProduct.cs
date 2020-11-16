@@ -31,5 +31,7 @@ namespace Sbidu.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public ICollection<AuctionProductGallery> AuctionProductGalleries { get; set; }
+
+        public List<UserAuctionProduct> UserAuctionProducts { get; set; }
     }
 }

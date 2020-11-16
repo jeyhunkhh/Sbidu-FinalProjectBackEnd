@@ -19,30 +19,49 @@
                 </li>
             </ul>
             <div class="my-account d-flex align-items-center">
-                <a href="sing-in.html" class="login">Login</a>
-                <button class="user-profile">
-                    <i class="flaticon-user"></i>
-                </button>
-                <ul class="list">
-                    <li>
-                        <a asp-controller="mybids" asp-action="index">
-                            <i class="fas fa-user"></i>
-                            Profile
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="personalprofile" asp-action="index">
-                            <i class="fas fa-cogs"></i>
-                            Settings
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul>
+                        <li>@ViewBag.FullName</li>
+                    </ul>
+                    <button class="user-profile ml-3">
+                        @if (ViewBag.Photo == null)
+                        {
+                            <img src="~/uploads/user-1.PNG" alt="">
+                        }
+                        else
+                        {
+                            <img src="~/uploads/@ViewBag.Photo" alt="">
+                        }
+                    </button>
+                    <ul class="list">
+                        <li>
+                            <a asp-controller="mybids" asp-action="index">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="personalprofile" asp-action="index">
+                                <i class="fas fa-cogs"></i>
+                                Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="account" asp-action="logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <a asp-controller="account" asp-action="login" class="login">Login</a>
+                    <a asp-controller="account" asp-action="login" class="user-profile">
+                        <img src="~/uploads/user-1.PNG" alt="">
+                    </a>
+                }
             </div>
         </div>
     </div>

@@ -1,4 +1,6 @@
-﻿@section Styles{
+﻿@model AboutViewModel
+
+@section Styles{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
@@ -20,7 +22,7 @@
             </li>
         </ul>
     </div>
-    <div class="bg-image" style="background-image: url(uploads/hero-bg.png);">
+    <div class="bg-image" style="background-image: url(/uploads/hero-bg.png);">
 
     </div>
 </section>
@@ -174,114 +176,36 @@
         </div>
         <div class="team">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="item">
-                        <div class="image">
-                            <img src="~/uploads/team1.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h5>
-                                <a href="#">
-                                    Kent Quinn
-                                </a>
-                            </h5>
-                            <ul>
-                                <li>
+                @foreach (var item in Model.Teams)
+                {
+                    <div class="col-lg-3">
+                        <div class="item">
+                            <div class="image">
+                                <img src="~/uploads/@item.Photo" alt="">
+                            </div>
+                            <div class="content">
+                                <h5>
                                     <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
+                                        @item.Fullname
                                     </a>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="item">
-                        <div class="image">
-                            <img src="~/uploads/team2.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h5>
-                                <a href="#">
-                                    Dustin Day
-                                </a>
-                            </h5>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                                </h5>
+                                <ul>
+                                    <li>
+                                        <a href="@item.Facebook">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="@item.Twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="@item.Instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="item">
-                        <div class="image">
-                            <img src="~/uploads/team3.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h5>
-                                <a href="#">
-                                    Antonia Little
-                                </a>
-                            </h5>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="item">
-                        <div class="image">
-                            <img src="~/uploads/team4.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h5>
-                                <a href="#">
-                                    Marie Wolfe
-                                </a>
-                            </h5>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -290,5 +214,5 @@
 <partial name="_CustomerComments" />
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="assets/js/jquery.countTo.js"></script>
+    <script src="~/js/jquery.countTo.js"></script>
 }

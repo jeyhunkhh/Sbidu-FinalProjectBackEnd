@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Sbidu.Models;
 
 namespace Sbidu.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -16,6 +17,9 @@ namespace Sbidu.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<Faq> Faqs { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
+        public DbSet<UserAuctionProduct> UserAuctionProducts { get; set; }
     }
 }

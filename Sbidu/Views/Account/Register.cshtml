@@ -1,0 +1,88 @@
+﻿@model RegisterViewModel
+<!-- Breadcrumb -->
+<section id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="index.html">
+                    Home
+                    <i class="flaticon-right-arrow"></i>
+                </a>
+            </li>
+            <li>
+                <a href="index.html">
+                    Auction
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="bg-image" style="background-image: url(/uploads/hero-bg.png);">
+
+    </div>
+</section>
+<!-- End Breadcrumb -->
+<!-- Register -->
+<section id="register">
+    <div class="container">
+        <div class="account d-flex">
+            <div class="left-side">
+                <div class="header text-center">
+                    <h1>SIGN UP</h1>
+                    <p>We're happy you're here!</p>
+                </div>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <span asp-validation-for="@Model.FullName" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="@Model.FullName">
+                            <i class="far fa-user"></i>
+                        </label>
+                        <input asp-for="@Model.FullName" class="form-control" placeholder="Your Fullname">
+                    </div>
+                    <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="@Model.UserName">
+                            <i class="far fa-user"></i>
+                        </label>
+                        <input asp-for="@Model.UserName" class="form-control" placeholder="User Name">
+                    </div>
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="@Model.Email">
+                            <i class="far fa-envelope"></i>
+                        </label>
+                        <input asp-for="@Model.Email" class="form-control" placeholder="Email Address">
+                    </div>
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="@Model.Password">
+                            <i class="fas fa-lock"></i>
+                        </label>
+                        <input asp-for="@Model.Password" class="form-control password" placeholder="Password">
+                        <span class="show-password"><i class="fas fa-eye"></i></span>
+                    </div>
+                    <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="@Model.ConfirmPassword">
+                            <i class="fas fa-lock"></i>
+                        </label>
+                        <input asp-for="@Model.ConfirmPassword" class="form-control" placeholder="Re-Password">
+                    </div>
+
+                        <button>REGISTER</button>
+                </form>
+            </div>
+            <div class="right-side">
+                <div class="sign-up">
+                    <h2>ALREADY HAVE AN ACCOUNT?</h2>
+                    <p>Log in and go to your Dashboard.</p>
+                    <a asp-action="login">LOGIN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Register -->
+@section Scripts{
+    <partial name="_ValidationScripts" />
+}

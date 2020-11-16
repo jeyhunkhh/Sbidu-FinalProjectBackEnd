@@ -1,4 +1,5 @@
-﻿
+﻿@model AuctionViewModel
+
 <!-- Breadcrumb -->
 <section id="breadcrumb">
     <div class="container">
@@ -16,27 +17,70 @@
             </li>
         </ul>
     </div>
-    <div class="bg-image" style="background-image: url(uploads/hero-bg.png);">
+    <div class="bg-image" style="background-image: url(/uploads/hero-bg.png);">
 
     </div>
 </section>
 <!-- End Breadcrumb -->
-
 <!-- Featured Auctions -->
 <section id="featured-auctions">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="title">
-                    <h2>Bid On These Featured Auctions! </h2>
+                    <h2>Bid On These Featured Popular Auctions! </h2>
                 </div>
             </div>
         </div>
-        <partial name="_AuctionPoster" />
+        <div class="row justify-content-between">
+            @foreach (var item in Model.AuctionProductsPopular.Take(3))
+            {
+                <div class="col-lg-4">
+                    <div class="auction-item">
+                        <div class="image">
+                            <a asp-controller="auctiondetail" asp-action="index">
+                                <img src="~/uploads/@item.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
+                            </a>
+                            <a href="#" class="star">
+                                <i class="far fa-star"></i>
+                            </a>
+                            <a asp-controller="auctiondetail" asp-action="index" class="hammer">
+                                <i class="flaticon-hammer"></i>
+                            </a>
+                        </div>
+                        <div class="auction-content">
+                            <h5>@item.Name</h5>
+                            <div class="bid d-flex justify-content-between">
+                                <div class="current-bid d-flex">
+                                    <i class="flaticon-hammer"></i>
+                                    <p class="d-flex flex-column">
+                                        Current Bid
+                                        <span>$876.00</span>
+                                    </p>
+                                </div>
+                                <div class="buy-now-price d-flex">
+                                    <i class="flaticon-money"></i>
+                                    <p class="d-flex flex-column">
+                                        Buy Now
+                                        <span>$@item.BuyNowPrice</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time d-flex ">
+                            <div class="countdown" data-countdown="@item.EndDate.ToString("MM.dd.yyyy HH:mm").Replace(".","/")"></div>
+                            <span>30 Bids</span>
+                        </div>
+                        <div class="button text-center">
+                            <a asp-controller="auctiondetail" asp-action="index">Submit A Bid</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </section>
 <!-- End Featured Auctions -->
-
 <!-- Product Auction -->
 <section id="product-auction">
     <div class="container">
@@ -48,320 +92,79 @@
                     </div>
                     <div class="content">
                         <ul>
-                            <li class="active">
-                                <a href="#">
-                                    <span><i class="fas fa-car"></i></span>
-                                    Vehicles
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span><i class="fas fa-gem"></i></span>
-                                    Jewelry
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span><i class="flaticon-wristwatch"></i></span>
-                                    Watches
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span><i class="flaticon-camera"></i></span>
-                                    Electronics
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span><i class="flaticon-football-ball"></i></span>
-                                    Sports
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span><i class="flaticon-condominium"></i></span>
-                                    Real Estate
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span><i class="flaticon-paint-board-and-brush"></i></span>
-                                    Arts
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span><i class="flaticon-dollar"></i></span>
-                                    Coins
-                                </a>
-                            </li>
+                            @foreach (var item in Model.Categories)
+                            {
+                                if (Model.PagingList.FirstOrDefault().CategoryId == item.Id)
+                                {
+                                    <li class="active">
+                                        <a asp-action="index" asp-route-id="@item.Id">
+                                            <span><i class="@item.Icon"></i></span>
+                                            @item.Name
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-action="index" asp-route-id="@item.Id">
+                                            <span><i class="@item.Icon"></i></span>
+                                            @item.Name
+                                        </a>
+                                    </li>
+                                }
+                            }
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="auction-item">
-                            <div class="image">
-                                <a href="auction-details.html">
-                                    <img src="~/uploads/car01.png" alt="">
-                                </a>
-                                <a href="#" class="star">
-                                    <i class="far fa-star"></i>
-                                </a>
-                                <a href="auction-details.html" class="hammer">
-                                    <i class="flaticon-hammer"></i>
-                                </a>
-                            </div>
-                            <div class="auction-content">
-                                <h5>2020 Hyundai Elantra, Sel</h5>
-                                <div class="bid d-flex justify-content-between">
-                                    <div class="current-bid d-flex">
+                    @foreach (var item in Model.PagingList.Take(4))
+                    { 
+                        <div class="col-lg-6">
+                            <div class="auction-item">
+                                <div class="image">
+                                    <a asp-controller="auctiondetail" asp-action="index">
+                                        <img src="~/uploads/@item.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
+                                    </a>
+                                    <a href="#" class="star">
+                                        <i class="far fa-star"></i>
+                                    </a>
+                                    <a asp-controller="auctiondetail" asp-action="index" class="hammer">
                                         <i class="flaticon-hammer"></i>
-                                        <p class="d-flex flex-column">
-                                            Current Bid
-                                            <span>$876.00</span>
-                                        </p>
-                                    </div>
-                                    <div class="buy-now-price d-flex">
-                                        <i class="flaticon-money"></i>
-                                        <p class="d-flex flex-column">
-                                            Buy Now
-                                            <span>$5000.00</span>
-                                        </p>
+                                    </a>
+                                </div>
+                                <div class="auction-content">
+                                    <h5>@item.Name</h5>
+                                    <div class="bid d-flex justify-content-between">
+                                        <div class="current-bid d-flex">
+                                            <i class="flaticon-hammer"></i>
+                                            <p class="d-flex flex-column">
+                                                Current Bid
+                                                <span>$876.00</span>
+                                            </p>
+                                        </div>
+                                        <div class="buy-now-price d-flex">
+                                            <i class="flaticon-money"></i>
+                                            <p class="d-flex flex-column">
+                                                Buy Now
+                                                <span>@item.BuyNowPrice</span>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="time d-flex ">
-                                <div class="countdown" data-countdown="10/31/2020 20:00"></div>
-                                <span>30 Bids</span>
-                            </div>
-                            <div class="button text-center">
-                                <a href="auction-details.html">Submit A Bid</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="auction-item">
-                            <div class="image">
-                                <a href="auction-details.html">
-                                    <img src="~/uploads/car03.png" alt="">
-                                </a>
-                                <a href="#" class="star">
-                                    <i class="far fa-star"></i>
-                                </a>
-                                <a href="auction-details.html" class="hammer">
-                                    <i class="flaticon-hammer"></i>
-                                </a>
-                            </div>
-                            <div class="auction-content">
-                                <h5>2019 Mercedes-Benz C, 300</h5>
-                                <div class="bid d-flex justify-content-between">
-                                    <div class="current-bid d-flex">
-                                        <i class="flaticon-hammer"></i>
-                                        <p class="d-flex flex-column">
-                                            Current Bid
-                                            <span>$876.00</span>
-                                        </p>
-                                    </div>
-                                    <div class="buy-now-price d-flex">
-                                        <i class="flaticon-money"></i>
-                                        <p class="d-flex flex-column">
-                                            Buy Now
-                                            <span>$5000.00</span>
-                                        </p>
-                                    </div>
+                                <div class="time d-flex ">
+                                    <div class="countdown" data-countdown="@item.EndDate.ToString("MM.dd.yyyy HH:mm").Replace(".","/")"></div>
+                                    <span>30 Bids</span>
+                                </div>
+                                <div class="button text-center">
+                                    <a asp-controller="auctiondetail" asp-action="index">Submit A Bid</a>
                                 </div>
                             </div>
-                            <div class="time d-flex ">
-                                <div class="countdown" data-countdown="10/31/2020 20:00"></div>
-                                <span>30 Bids</span>
-                            </div>
-                            <div class="button text-center">
-                                <a href="auction-details.html">Submit A Bid</a>
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="auction-item">
-                            <div class="image">
-                                <a href="auction-details.html">
-                                    <img src="~/uploads/car04.png" alt="">
-                                </a>
-                                <a href="#" class="star">
-                                    <i class="far fa-star"></i>
-                                </a>
-                                <a href="#" class="hammer">
-                                    <i class="flaticon-hammer"></i>
-                                </a>
-                            </div>
-                            <div class="auction-content">
-                                <h5>2014 KIA Sorento, LX</h5>
-                                <div class="bid d-flex justify-content-between">
-                                    <div class="current-bid d-flex">
-                                        <i class="flaticon-hammer"></i>
-                                        <p class="d-flex flex-column">
-                                            Current Bid
-                                            <span>$876.00</span>
-                                        </p>
-                                    </div>
-                                    <div class="buy-now-price d-flex">
-                                        <i class="flaticon-money"></i>
-                                        <p class="d-flex flex-column">
-                                            Buy Now
-                                            <span>$5000.00</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="time d-flex ">
-                                <div class="countdown" data-countdown="10/31/2020 20:00"></div>
-                                <span>30 Bids</span>
-                            </div>
-                            <div class="button text-center">
-                                <a href="auction-details.html">Submit A Bid</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="auction-item">
-                            <div class="image">
-                                <a href="auction-details.html">
-                                    <img src="~/uploads/car05.png" alt="">
-                                </a>
-                                <a href="#" class="star">
-                                    <i class="far fa-star"></i>
-                                </a>
-                                <a href="#" class="hammer">
-                                    <i class="flaticon-hammer"></i>
-                                </a>
-                            </div>
-                            <div class="auction-content">
-                                <h5>2019 Subaru Crosstrek, Premium</h5>
-                                <div class="bid d-flex justify-content-between">
-                                    <div class="current-bid d-flex">
-                                        <i class="flaticon-hammer"></i>
-                                        <p class="d-flex flex-column">
-                                            Current Bid
-                                            <span>$876.00</span>
-                                        </p>
-                                    </div>
-                                    <div class="buy-now-price d-flex">
-                                        <i class="flaticon-money"></i>
-                                        <p class="d-flex flex-column">
-                                            Buy Now
-                                            <span>$5000.00</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="time d-flex ">
-                                <div class="countdown" data-countdown="10/31/2020 20:00"></div>
-                                <span>30 Bids</span>
-                            </div>
-                            <div class="button text-center">
-                                <a href="auction-details.html">Submit A Bid</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="auction-item">
-                            <div class="image">
-                                <a href="auction-details.html">
-                                    <img src="~/uploads/car07.png" alt="">
-                                </a>
-                                <a href="#" class="star">
-                                    <i class="far fa-star"></i>
-                                </a>
-                                <a href="#" class="hammer">
-                                    <i class="flaticon-hammer"></i>
-                                </a>
-                            </div>
-                            <div class="auction-content">
-                                <h5>2019 Ford Expedition</h5>
-                                <div class="bid d-flex justify-content-between">
-                                    <div class="current-bid d-flex">
-                                        <i class="flaticon-hammer"></i>
-                                        <p class="d-flex flex-column">
-                                            Current Bid
-                                            <span>$876.00</span>
-                                        </p>
-                                    </div>
-                                    <div class="buy-now-price d-flex">
-                                        <i class="flaticon-money"></i>
-                                        <p class="d-flex flex-column">
-                                            Buy Now
-                                            <span>$5000.00</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="time d-flex ">
-                                <div class="countdown" data-countdown="10/31/2020 20:00"></div>
-                                <span>30 Bids</span>
-                            </div>
-                            <div class="button text-center">
-                                <a href="auction-details.html">Submit A Bid</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="auction-item">
-                            <div class="image">
-                                <a href="auction-details.html">
-                                    <img src="~/uploads/car09.png" alt="">
-                                </a>
-                                <a href="#" class="star">
-                                    <i class="far fa-star"></i>
-                                </a>
-                                <a href="#" class="hammer">
-                                    <i class="flaticon-hammer"></i>
-                                </a>
-                            </div>
-                            <div class="auction-content">
-                                <h5>2018 Dodge Grand, Sxt</h5>
-                                <div class="bid d-flex justify-content-between">
-                                    <div class="current-bid d-flex">
-                                        <i class="flaticon-hammer"></i>
-                                        <p class="d-flex flex-column">
-                                            Current Bid
-                                            <span>$876.00</span>
-                                        </p>
-                                    </div>
-                                    <div class="buy-now-price d-flex">
-                                        <i class="flaticon-money"></i>
-                                        <p class="d-flex flex-column">
-                                            Buy Now
-                                            <span>$5000.00</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="time d-flex ">
-                                <div class="countdown" data-countdown="10/31/2020 20:00"></div>
-                                <span>30 Bids</span>
-                            </div>
-                            <div class="button text-center">
-                                <a href="auction-details.html">Submit A Bid</a>
-                            </div>
-                        </div>
-                    </div>
+                    }
                     <ul class="pagination">
-                        <li>
-                            <a href="#">
-                                <i class="flaticon-left-arrow"></i>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#" class="active">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li>
-                            <a href="#">
-                                <i class="flaticon-right-arrow"></i>
-                            </a>
-                        </li>
+                        @await this.Component.InvokeAsync("Pager", new { PagingList = Model.PagingList })
                     </ul>
                 </div>
             </div>

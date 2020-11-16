@@ -1,4 +1,4 @@
-﻿
+﻿@model Setting
 <div class="footer-top">
     <div class="container">
         <div class="row">
@@ -98,25 +98,25 @@
                         <li>
                             <a href="#">
                                 <i class="fas fa-phone-alt"></i>
-                                (646) 663-4575
+                                @Model.Phone
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fas fa-blender-phone"></i>
-                                (646) 968-0608
+                                @Model.FaxPhone
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="mailto:">
                                 <i class="fas fa-envelope-open-text"></i>
-                                help@engotheme.com
+                                @Model.Email
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fas fa-location-arrow"></i>
-                                1201 Broadway Suite
+                                @Model.Address
                             </a>
                         </li>
                     </ul>

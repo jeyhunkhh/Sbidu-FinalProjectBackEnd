@@ -19,7 +19,9 @@ namespace Sbidu.Controllers
             HomeViewModel homeViewModel = new HomeViewModel
             {
                 HomePoster = _context.HomePosters.FirstOrDefault(),
-                AuctionProducts = _context.AuctionProducts.Include(x=>x.AuctionProductGalleries).ToList(),
+                AuctionProducts = _context.AuctionProducts
+                    .Include(x=>x.AuctionProductGalleries)
+                    .Include(x=>x.Category).ToList(),
                 Categories = _context.Categories.ToList()
             };
             return View(homeViewModel);

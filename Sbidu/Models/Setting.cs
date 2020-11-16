@@ -14,9 +14,11 @@ namespace Sbidu.Models
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        public int Phone { get; set; }
+        [MaxLength(30)]
+        public string Phone { get; set; }
         [Required]
-        public int FaxPhone { get; set; }
+        [MaxLength(30)]
+        public string FaxPhone { get; set; }
         [Required]
         [MaxLength(100)]
         public string Address { get; set; }
