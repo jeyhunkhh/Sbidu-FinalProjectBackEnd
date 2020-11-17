@@ -20,6 +20,7 @@ namespace Sbidu.ViewComponents
             List<AuctionProduct> products = _context.AuctionProducts
                 .Include(x=>x.AuctionProductGalleries)
                 .Include(x => x.Category)
+                .Include(x=> x.UserAuctionProducts)
                 .Where(x=>x.EndDate > DateTime.Now)
                 .Where(x => x.CategoryId == Id).ToList();
             return View(products);

@@ -10,6 +10,7 @@ namespace Sbidu.Models
         public int Id { get; set; }
         public int? Bid { get; set; }
         public bool IsFavorit { get; set; }
+        public DateTime AddDate { get; set; }
 
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }

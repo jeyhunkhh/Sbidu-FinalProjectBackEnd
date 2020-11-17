@@ -43,7 +43,7 @@
                     @foreach (var item in Model.Categories)
                     {
                         <div class="item">
-                            <a asp-controller="auction" asp-action="index">
+                            <a asp-controller="auction" asp-action="index" asp-route-id="@item.Id">
                                 <img src="~/uploads/@item.Photo" alt="">
                                 <span>@item.Name</span>
                             </a>
@@ -144,10 +144,10 @@
                     <div class="col-lg-6">
                         <div class="popular-item d-flex">
                             <div class="image">
-                                <a asp-controller="auctiondetails" asp-action="index">
+                                <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">
                                     <img src="~/uploads/@item.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
                                 </a>
-                                <a asp-controller="auctiondetails" asp-action="index" class="hammer">
+                                <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id" class="hammer">
                                     <i class="flaticon-hammer"></i>
                                 </a>
                             </div>

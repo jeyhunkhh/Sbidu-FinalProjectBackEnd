@@ -23,7 +23,14 @@
                             <i class="flaticon-hammer"></i>
                             <p class="d-flex flex-column">
                                 Current Bid
-                                <span>$876.00</span>
+                                @if (item.UserAuctionProducts.Count > 0)
+                                {
+                                    <span>$@item.UserAuctionProducts.OrderByDescending(x => x.Bid).FirstOrDefault().Bid</span>
+                                }
+                                else
+                                {
+                                    <span>$0</span>
+                                }
                             </p>
                         </div>
                         <div class="buy-now-price d-flex">
@@ -37,7 +44,7 @@
                 </div>
                 <div class="time d-flex ">
                     <div class="countdown" data-countdown="@item.EndDate.ToString("MM.dd.yyyy HH:mm").Replace(".","/")"></div>
-                    <span>30 Bids</span>
+                    <span>@item.UserAuctionProducts.Where(x=>x.Bid > 0).Count() Bids</span>
                 </div>
                 <div class="button text-center">
                     <a asp-controller="auction" asp-action="index" asp-route-id="@item.Id">Submit A Bid</a>
