@@ -83,14 +83,28 @@
                                 <div class="image">
                                     <img src="~/uploads/search-icon.png" class="img-fluid" alt="">
                                 </div>
-                                <input asp-for="@Model.Bid" step="10" min="@Model.AuctionProduct.StartPrice" placeholder="Enter you bid amount">
+                                @if (Model.AuctionProduct.UserAuctionProducts.Any(x => x.Bid > 0))
+                                {
+                                    <input asp-for="(@Model.Bid" step="10" min="@Model.AuctionProduct.UserAuctionProducts.OrderByDescending(x=>x.Bid).FirstOrDefault().Bid" placeholder="Enter you bid amount">
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.Bid" step="10" min="@Model.AuctionProduct.StartPrice" placeholder="Enter you bid amount">
+                                }
                                 <button type="submit">Submit A Bid</button>
                             </form>
                         </div>
                         <div class="buy-now">
                             <a href="#" class="buy">BUY NOW: $@Model.AuctionProduct.BuyNowPrice</a>
-                            <a href="#" class="favory">
-                                <i class="fas fa-star"></i>
+                            <a asp-action="AddToWishlist" asp-route-id="@Model.AuctionProduct.Id" class="star">
+                                @if (Model.AuctionProduct.UserAuctionProducts.Where(x=>x.AppUserId == ViewBag.User.Id).Any(x => x.IsFavorit == true)) 
+                                {
+                                    <i class="fas fa-star"></i>
+                                }
+                                else
+                                {
+                                    <i class="far fa-star"></i>
+                                }
                                 Add To Wishlist
                             </a>
                             <div class="social d-flex">

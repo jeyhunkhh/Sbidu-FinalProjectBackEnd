@@ -985,6 +985,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -1231,6 +1232,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -1520,6 +1522,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -1884,6 +1887,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -2072,6 +2076,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -2486,6 +2491,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -2725,6 +2731,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -3113,6 +3120,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -3405,6 +3413,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -3648,6 +3657,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -4135,6 +4145,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -4168,13 +4179,14 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
           box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
 }
 
-#details .details-bid .header .buy-now .favory {
+#details .details-bid .header .buy-now .star {
   display: inline-block;
   background: transparent;
   color: #171d1c;
@@ -4187,7 +4199,7 @@ footer .footer-bg {
   border: 1px solid #dee2e6 !important;
 }
 
-#details .details-bid .header .buy-now .favory i {
+#details .details-bid .header .buy-now .star i {
   color: #ff7800;
 }
 
@@ -4657,6 +4669,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -4686,6 +4699,10 @@ footer .footer-bg {
 
 #login .account .left-side .header {
   margin-bottom: 55px;
+}
+
+#login .account .left-side form {
+  text-align: center;
 }
 
 #login .account .left-side form .form-group {
@@ -4747,6 +4764,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
@@ -4873,6 +4891,7 @@ footer .footer-bg {
   width: 100%;
   max-width: 230px;
   text-align: center;
+  outline: none;
   font-family: "Roboto", sans-serif;
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);

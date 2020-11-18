@@ -12,7 +12,7 @@ namespace Sbidu.Models
         public bool IsFavorit { get; set; }
         public DateTime AddDate { get; set; }
 
-        public int AppUserId { get; set; }
+        public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
 
         public int AuctionProductId { get; set; }

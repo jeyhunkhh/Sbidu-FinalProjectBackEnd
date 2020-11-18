@@ -25,9 +25,9 @@ namespace Sbidu.Controllers
         }
         [Authorize()]
         [Route("auction-detail/{Id}")]
-        public IActionResult Index(int Id, AuctionDetailViewModel viewModel)
+        public async Task<IActionResult> Index(int Id, AuctionDetailViewModel viewModel)
         {
-             
+
             AuctionDetailViewModel model = new AuctionDetailViewModel
             {
                 AuctionProduct = _context.AuctionProducts.Where(x => x.EndDate > DateTime.Now)
@@ -37,7 +37,9 @@ namespace Sbidu.Controllers
                                          .FirstOrDefault(x => x.Id == Id),
                 Faq = _context.Faqs.ToList()
             };
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
+            ViewBag.User = user;
             if (viewModel.Bid != 0)
             {
                 var auction = _context.AuctionProducts.Include(x => x.UserAuctionProducts)
@@ -60,22 +62,79 @@ namespace Sbidu.Controllers
                     }
                 }
 
-                var user = _userManager.FindByNameAsync(User.Identity.Name);
+                
 
-                UserAuctionProduct userAuction = new UserAuctionProduct
+                if (auction.UserAuctionProducts == null)
                 {
-                    AppUserId = user.Id,
-                    AuctionProductId = Id,
-                    Bid = viewModel.Bid,
-                    AddDate = DateTime.Now
-                };
+                    UserAuctionProduct userAuction = new UserAuctionProduct
+                    {
+                        AppUserId = user.Id,
+                        AuctionProductId = Id,
+                        Bid = viewModel.Bid,
+                        AddDate = DateTime.Now
+                    };
 
-                _context.UserAuctionProducts.Add(userAuction);
-                _context.SaveChanges();
+                    _context.UserAuctionProducts.Add(userAuction);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    auction.UserAuctionProducts.FirstOrDefault().Bid = viewModel.Bid;
+                    auction.UserAuctionProducts.FirstOrDefault().AddDate = DateTime.Now;
+
+                    _context.SaveChanges();
+                }
+
             }
 
             return View(model);
 
         }
+
+        public async Task<IActionResult> AddToWishlist(int Id)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            await Helper.AddFavorites.AddFavorite(Id, _context, user);
+
+            return NoContent();
+        }
+
+        //public async Task<IActionResult> AddFavorite(int Id)
+        //{
+        //    var auction = _context.AuctionProducts.Include(x => x.UserAuctionProducts).FirstOrDefault(x => x.Id == Id);
+        //    var user = await _userManager.FindByNameAsync(User.Identity.Name);
+        //    var isFavorite = auction.UserAuctionProducts.Where(x => x.IsFavorit == true).FirstOrDefault(x => x.AppUserId == user.Id);
+
+        //    if(auction.UserAuctionProducts.Any(x => x.IsFavorit == false))
+        //    {
+        //        auction.UserAuctionProducts.Where(x => x.IsFavorit == false)
+        //                                   .OrderBy(x => x.Bid)
+        //                                   .FirstOrDefault().IsFavorit = true;
+
+        //        _context.SaveChanges();
+        //    }
+        //    else if (isFavorite == null)
+        //    {
+        //        UserAuctionProduct userAuction = new UserAuctionProduct
+        //        {
+        //            AppUserId = user.Id,
+        //            AuctionProductId = Id,
+        //            IsFavorit = true,
+        //            AddDate = DateTime.Now
+        //        };
+
+        //        _context.UserAuctionProducts.Add(userAuction);
+        //        _context.SaveChanges();
+        //    }
+        //    else
+        //    {
+        //        isFavorite.IsFavorit = false;
+        //        _context.SaveChanges();
+        //    }
+
+        //    return NoContent();
+        //}
+
     }
 }

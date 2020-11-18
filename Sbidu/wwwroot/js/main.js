@@ -273,6 +273,17 @@ $(document).ready(function () {
       }
     });
   }
+
+  if ($("#details").length){
+    $(".star").click(function(){
+      if($(this).children().hasClass("far fa-star")){
+        $(this).children("i").removeClass("far fa-star").addClass("fas fa-star")
+      }else{
+        $(this).children("i").removeClass("fas fa-star").addClass("far fa-star")
+      }
+    });
+  }
+
 });
 
 $(window).on("load", function () {
