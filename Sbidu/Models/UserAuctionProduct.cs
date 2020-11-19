@@ -11,6 +11,8 @@ namespace Sbidu.Models
         public int? Bid { get; set; }
         public bool IsFavorit { get; set; }
         public DateTime AddDate { get; set; }
+        public bool IsWinner { get; set; }
+        public int? SoldPrice { get; set; }
 
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }

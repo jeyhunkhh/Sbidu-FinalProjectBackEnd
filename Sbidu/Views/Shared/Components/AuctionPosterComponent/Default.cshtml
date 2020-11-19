@@ -7,11 +7,28 @@
             <div class="auction-item">
                 <div class="image">
                     <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">
-                            <img src="~/uploads/@item.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
+                        <img src="~/uploads/@item.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
                     </a>
-                    <a href="#" class="star">
-                        <i class="far fa-star"></i>
-                    </a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Home" asp-action="AddToWishlist" asp-route-id="@item.Id" class="star">
+
+                            @if (item.UserAuctionProducts.Where(x => x.AppUserId == ViewBag.User.Id).Any(x => x.IsFavorit == true))
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                            else
+                            {
+                                <i class="far fa-star"></i>
+                            }
+                        </a>
+                    }
+                    else { 
+                        <a asp-controller="account" asp-action="login" class="star">
+                            <i class="far fa-star"></i>
+                        </a>
+                    }
+
                     <a asp-controller="auction" asp-action="index" asp-route-id="@item.Id" class="hammer">
                         <i class="flaticon-hammer"></i>
                     </a>

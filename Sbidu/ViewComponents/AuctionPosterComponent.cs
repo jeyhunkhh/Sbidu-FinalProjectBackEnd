@@ -18,6 +18,7 @@ namespace Sbidu.ViewComponents
         public IViewComponentResult Invoke(int Id)
         {
             List<AuctionProduct> products = _context.AuctionProducts
+                .Where(x=>x.Sold == false)
                 .Include(x=>x.AuctionProductGalleries)
                 .Include(x => x.Category)
                 .Include(x=> x.UserAuctionProducts)

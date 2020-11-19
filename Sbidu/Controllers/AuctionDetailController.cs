@@ -27,7 +27,6 @@ namespace Sbidu.Controllers
         [Route("auction-detail/{Id}")]
         public async Task<IActionResult> Index(int Id, AuctionDetailViewModel viewModel)
         {
-
             AuctionDetailViewModel model = new AuctionDetailViewModel
             {
                 AuctionProduct = _context.AuctionProducts.Where(x => x.EndDate > DateTime.Now)
@@ -37,6 +36,7 @@ namespace Sbidu.Controllers
                                          .FirstOrDefault(x => x.Id == Id),
                 Faq = _context.Faqs.ToList()
             };
+
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             ViewBag.User = user;
@@ -62,9 +62,7 @@ namespace Sbidu.Controllers
                     }
                 }
 
-                
-
-                if (auction.UserAuctionProducts == null)
+                if (auction.UserAuctionProducts.Count == 0 || auction.UserAuctionProducts.Where(x => x.AppUserId == user.Id).FirstOrDefault() == null)
                 {
                     UserAuctionProduct userAuction = new UserAuctionProduct
                     {
@@ -77,14 +75,13 @@ namespace Sbidu.Controllers
                     _context.UserAuctionProducts.Add(userAuction);
                     _context.SaveChanges();
                 }
-                else
+                else if(auction.UserAuctionProducts.Where(x=>x.AppUserId == user.Id).FirstOrDefault() != null)
                 {
-                    auction.UserAuctionProducts.FirstOrDefault().Bid = viewModel.Bid;
-                    auction.UserAuctionProducts.FirstOrDefault().AddDate = DateTime.Now;
+                    auction.UserAuctionProducts.Where(x => x.AppUserId == user.Id).FirstOrDefault().Bid = viewModel.Bid;
+                    auction.UserAuctionProducts.Where(x => x.AppUserId == user.Id).FirstOrDefault().AddDate = DateTime.Now;
 
                     _context.SaveChanges();
                 }
-
             }
 
             return View(model);
@@ -100,41 +97,28 @@ namespace Sbidu.Controllers
             return NoContent();
         }
 
-        //public async Task<IActionResult> AddFavorite(int Id)
-        //{
-        //    var auction = _context.AuctionProducts.Include(x => x.UserAuctionProducts).FirstOrDefault(x => x.Id == Id);
-        //    var user = await _userManager.FindByNameAsync(User.Identity.Name);
-        //    var isFavorite = auction.UserAuctionProducts.Where(x => x.IsFavorit == true).FirstOrDefault(x => x.AppUserId == user.Id);
 
-        //    if(auction.UserAuctionProducts.Any(x => x.IsFavorit == false))
-        //    {
-        //        auction.UserAuctionProducts.Where(x => x.IsFavorit == false)
-        //                                   .OrderBy(x => x.Bid)
-        //                                   .FirstOrDefault().IsFavorit = true;
+        public async Task<IActionResult> BuyNow(int Id)
+        {
+            var auction = _context.AuctionProducts.Include(x => x.UserAuctionProducts).FirstOrDefault(x => x.Id == Id);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var isFavorite = auction.UserAuctionProducts.Where(x => x.IsFavorit == true).FirstOrDefault(x => x.AppUserId == user.Id);
 
-        //        _context.SaveChanges();
-        //    }
-        //    else if (isFavorite == null)
-        //    {
-        //        UserAuctionProduct userAuction = new UserAuctionProduct
-        //        {
-        //            AppUserId = user.Id,
-        //            AuctionProductId = Id,
-        //            IsFavorit = true,
-        //            AddDate = DateTime.Now
-        //        };
+                UserAuctionProduct userAuction = new UserAuctionProduct
+                {
+                    AuctionProductId = Id,
+                    IsWinner = true,
+                    Bid = 0,
+                    AddDate = DateTime.Now,
+                    SoldPrice = auction.BuyNowPrice,
+                    AppUserId = user.Id,
+                };
 
-        //        _context.UserAuctionProducts.Add(userAuction);
-        //        _context.SaveChanges();
-        //    }
-        //    else
-        //    {
-        //        isFavorite.IsFavorit = false;
-        //        _context.SaveChanges();
-        //    }
+                _context.UserAuctionProducts.Add(userAuction);
+                auction.Sold = true;
+                _context.SaveChanges();
 
-        //    return NoContent();
-        //}
-
+            return RedirectToAction("index","winningbids");
+        }
     }
 }

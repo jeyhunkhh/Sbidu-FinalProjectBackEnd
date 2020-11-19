@@ -95,9 +95,10 @@
                             </form>
                         </div>
                         <div class="buy-now">
-                            <a href="#" class="buy">BUY NOW: $@Model.AuctionProduct.BuyNowPrice</a>
+                            <a asp-action="BuyNow" asp-route-id="@Model.AuctionProduct.Id" class="buy">BUY NOW: $@Model.AuctionProduct.BuyNowPrice</a>
                             <a asp-action="AddToWishlist" asp-route-id="@Model.AuctionProduct.Id" class="star">
-                                @if (Model.AuctionProduct.UserAuctionProducts.Where(x=>x.AppUserId == ViewBag.User.Id).Any(x => x.IsFavorit == true)) 
+                                
+                                @if (Model.AuctionProduct.UserAuctionProducts.Where(x => x.AppUserId == ViewBag.User.Id).Any(x => x.IsFavorit == true))
                                 {
                                     <i class="fas fa-star"></i>
                                 }
@@ -201,7 +202,7 @@
                         <div class="image">
                             <img src="~/uploads/tab3.png" alt="">
                         </div>
-                        Bid History (36)
+                        Bid History (@Model.AuctionProduct.UserAuctionProducts.Where(x=>x.Bid >0).Count())
                     </a>
                 </li>
                 <li class="nav-item">
@@ -270,66 +271,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="image">
-                                        <img src="~/uploads/history01.png" alt="">
-                                    </div>
-                                    <h6>Moses Watts</h6>
-                                </td>
-                                <td>06/16/2020</td>
-                                <td>02:45:25 PM</td>
-                                <td>$900.00</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="image">
-                                        <img src="~/uploads/history02.png" alt="">
-                                    </div>
-                                    <h6>Pat Powell</h6>
-                                </td>
-                                <td>06/16/2020</td>
-                                <td>02:45:25 PM</td>
-                                <td>$900.00</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="image">
-                                        <img src="~/uploads/history03.png" alt="">
-                                    </div>
-                                    <h6>Jack Rodgers</h6>
-                                </td>
-                                <td>06/16/2020</td>
-                                <td>02:45:25 PM</td>
-                                <td>$900.00</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="image">
-                                        <img src="~/uploads/history04.png" alt="">
-                                    </div>
-                                    <h6>Arlene Paul</h6>
-                                </td>
-                                <td>06/16/2020</td>
-                                <td>02:45:25 PM</td>
-                                <td>$900.00</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="image">
-                                        <img src="~/uploads/history05.png" alt="">
-                                    </div>
-                                    <h6>Marcia Clarke</h6>
-                                </td>
-                                <td>06/16/2020</td>
-                                <td>02:45:25 PM</td>
-                                <td>$900.00</td>
-                            </tr>
+                            @foreach (var item in Model.AuctionProduct.UserAuctionProducts)
+                            {
+                                if (item.Bid > 0)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="image">
+                                                @if (item.AppUser.Photo == null)
+                                                {
+                                                    <img src="~/uploads/user-1.jpg" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/uploads/@item.AppUser.Photo" alt="">
+                                                }
+
+                                            </div>
+                                            <h6>@item.AppUser.FullName</h6>
+                                        </td>
+                                        <td>@item.AddDate.ToString("MM.dd.yyyy").Replace(".", "/")</td>
+                                        <td>@item.AddDate.ToString("HH:mm:ss").Replace(".", "/")</td>
+                                        <td>$@item.Bid</td>
+                                    </tr>
+                                }
+                            }
                         </tbody>
                     </table>
-                    <div class="text-center mb-3 mt-4">
-                        <a href="#">Load More</a>
-                    </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="questions">
@@ -347,7 +315,6 @@
                                 <p>@item.Answer</p>
                             </div>
                         </div>
-
                     }
                 </div>
             </div>

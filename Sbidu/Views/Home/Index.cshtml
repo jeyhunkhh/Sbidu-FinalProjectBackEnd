@@ -164,7 +164,14 @@
                                 </div>
                                 <p class="total-bid">
                                     Total Bids :
-                                    <span>130 Bids</span>
+                                    @if (item.UserAuctionProducts.Count > 0)
+                                    {
+                                        <span>$@item.UserAuctionProducts.OrderByDescending(x => x.Bid).FirstOrDefault().Bid</span>
+                                    }
+                                    else
+                                    {
+                                        <span>$0</span>
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -228,14 +235,21 @@
                     <div class="row">
                         <div class="col-lg-5 p-0">
                             <h3>
-                                <a asp-controller="auctiondetail" asp-action="index">@item.Name</a>
+                                <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">@item.Name</a>
                             </h3>
                             <div class="bid d-flex justify-content-around">
                                 <div class="current-bid d-flex">
                                     <i class="flaticon-hammer"></i>
                                     <p class="d-flex flex-column">
                                         Current Bid
-                                        <span>$876.00</span>
+                                        @if (item.UserAuctionProducts.Count > 0)
+                                        {
+                                            <span>$@item.UserAuctionProducts.OrderByDescending(x => x.Bid).FirstOrDefault().Bid</span>
+                                        }
+                                        else
+                                        {
+                                            <span>$0</span>
+                                        }
                                     </p>
                                 </div>
                                 <div class="buy-now-price d-flex">
@@ -251,7 +265,7 @@
                                 <span>30 Bids</span>
                             </div>
                             <div class="button text-center">
-                                <a asp-controller="auctiondetail" asp-action="index">Submit A Bid</a>
+                                <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">Submit A Bid</a>
                             </div>
                         </div>
                         <div class="col-lg-7">

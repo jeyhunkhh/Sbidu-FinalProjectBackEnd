@@ -274,7 +274,7 @@ $(document).ready(function () {
     });
   }
 
-  if ($("#details").length){
+  if ($(".star").length){
     $(".star").click(function(){
       if($(this).children().hasClass("far fa-star")){
         $(this).children("i").removeClass("far fa-star").addClass("fas fa-star")

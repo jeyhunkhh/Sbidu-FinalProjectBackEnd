@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sbidu.Data;
 
 namespace Sbidu.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201119114345_AddSoldPriceAndIsWinner")]
+    partial class AddSoldPriceAndIsWinner
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -251,9 +253,6 @@ namespace Sbidu.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("Popular")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Sold")
                         .HasColumnType("bit");
 
                     b.Property<int>("StartPrice")

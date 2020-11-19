@@ -26,10 +26,14 @@ namespace Sbidu.Models
         public int StartPrice { get; set; }
         [Required]
         public bool Popular { get; set; }
+        public bool Sold { get; set; }
+
         [NotMapped]
         public List<IFormFile> Upload { get; set; }
+
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
         public ICollection<AuctionProductGallery> AuctionProductGalleries { get; set; }
 
         public List<UserAuctionProduct> UserAuctionProducts { get; set; }

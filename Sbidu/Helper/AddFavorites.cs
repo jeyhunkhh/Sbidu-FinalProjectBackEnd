@@ -30,6 +30,7 @@ namespace Sbidu.Helper
                 UserAuctionProduct userAuction = new UserAuctionProduct
                 {
                     AppUserId = user.Id,
+                    Bid = 0,
                     AuctionProductId = Id,
                     IsFavorit = true,
                     AddDate = DateTime.Now
