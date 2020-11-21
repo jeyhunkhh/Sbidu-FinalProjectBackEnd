@@ -30,11 +30,11 @@
                 <div class="col-lg-12">
                     <div class="slider-for" style="color: white;">
                         @foreach (var item in Model.AuctionProduct.AuctionProductGalleries)
-	                     {
+                        {
                             <div class="image">
                                 <img src="~/uploads/@item.Photo" alt="">
                             </div>
-	                     }
+                        }
                     </div>
                     <div class="slider-nav">
                         @foreach (var item in Model.AuctionProduct.AuctionProductGalleries)
@@ -95,9 +95,9 @@
                             </form>
                         </div>
                         <div class="buy-now">
-                            <a asp-action="BuyNow" asp-route-id="@Model.AuctionProduct.Id" class="buy">BUY NOW: $@Model.AuctionProduct.BuyNowPrice</a>
+                            <button class="sweet buy">BUY NOW: $@Model.AuctionProduct.BuyNowPrice</button>
                             <a asp-action="AddToWishlist" asp-route-id="@Model.AuctionProduct.Id" class="star">
-                                
+
                                 @if (Model.AuctionProduct.UserAuctionProducts.Where(x => x.AppUserId == ViewBag.User.Id).Any(x => x.IsFavorit == true))
                                 {
                                     <i class="fas fa-star"></i>
@@ -202,7 +202,7 @@
                         <div class="image">
                             <img src="~/uploads/tab3.png" alt="">
                         </div>
-                        Bid History (@Model.AuctionProduct.UserAuctionProducts.Where(x=>x.Bid >0).Count())
+                        Bid History (@Model.AuctionProduct.UserAuctionProducts.Where(x => x.Bid > 0).Count())
                     </a>
                 </li>
                 <li class="nav-item">
@@ -319,10 +319,32 @@
                 </div>
             </div>
         </div>
-     </div>
+    </div>
 </section>
 
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="~/js/jquery.countTo.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        $(".sweet").click(function () {
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                showCancelButton: true,
+                confirmButtonText: `Buy`,
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    if (result.value) {
+                        window.location = "/auctiondetail/buynow/@Model.AuctionProduct.Id";
+                    }
+                    Swal.fire('The product is now yours!', '', 'success').then(function (result) {
+                        if (result.value) {
+                            window.location = "/winning-bids";
+                        }
+                    })
+                }
+            })
+        })
+    </script>
 }

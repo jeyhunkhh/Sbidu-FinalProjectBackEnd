@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Sbidu.Data;
 using Sbidu.Models;
 using Sbidu.ViewModels;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,7 +30,17 @@ namespace Sbidu.Controllers
 
                 ViewBag.User = user;
             }
-       
+
+            var auction = _context.AuctionProducts.OrderByDescending(x=>x.EndDate)
+                                                  .Where(x => x.Sold == false)
+                                                  .Include(x => x.UserAuctionProducts).FirstOrDefault();
+
+            if (auction.EndDate < DateTime.Now)
+            {
+                var auctionEnd = auction.UserAuctionProducts.OrderByDescending(x => x.Bid).FirstOrDefault();
+                auctionEnd.SoldPrice = auctionEnd.Bid;
+            }
+
             HomeViewModel homeViewModel = new HomeViewModel
             {
                 HomePoster = _context.HomePosters.FirstOrDefault(),

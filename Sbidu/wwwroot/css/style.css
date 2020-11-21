@@ -4184,6 +4184,7 @@ footer .footer-bg {
   background: -webkit-linear-gradient(90deg, #3da9f5 0%, #683df5 100%);
   -webkit-box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
           box-shadow: -1.04px 4.891px 20px 0px rgba(69, 49, 183, 0.5);
+  border: none;
 }
 
 #details .details-bid .header .buy-now .star {

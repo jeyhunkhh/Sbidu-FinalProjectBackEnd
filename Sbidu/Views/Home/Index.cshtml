@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="header-button">
-                    <a href="#" class="view-all btn rounded-pill">View All</a>
+                    <a asp-controller="auction" asp-action="index" asp-route-id="@Model.Categories.Find(x=>x.Type == "Vehicles").Id" class="view-all btn rounded-pill">View All</a>
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="header-button">
-                    <a href="#" class="view-all btn rounded-pill">View All</a>
+                    <a asp-controller="auction" asp-action="index" asp-route-id="@Model.Categories.Find(x=>x.Type == "Jewelry").Id" class="view-all btn rounded-pill">View All</a>
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div class="header-button">
-                    <a href="#" class="view-all btn rounded-pill">View All</a>
+                    <a asp-controller="auction" asp-action="index" asp-route-id="@Model.Categories.Find(x=>x.Type == "Watches").Id" class="view-all btn rounded-pill">View All</a>
                 </div>
             </div>
         </div>
@@ -199,7 +199,7 @@
                     </div>
                 </div>
                 <div class="header-button">
-                    <a href="#" class="view-all btn rounded-pill">View All</a>
+                    <a asp-controller="auction" asp-action="index" asp-route-id="@Model.Categories.Find(x=>x.Type == "Coins").Id" class="view-all btn rounded-pill">View All</a>
                 </div>
             </div>
         </div>
@@ -223,59 +223,59 @@
                     </div>
                 </div>
                 <div class="header-button">
-                    <a href="#" class="view-all btn rounded-pill">View All</a>
+                    <a asp-controller="auction" asp-action="index" asp-route-id="@Model.Categories.Find(x=>x.Type == "Real-Estate").Id" class="view-all btn rounded-pill">View All</a>
                 </div>
             </div>
         </div>
         <div class="real-estate-slider">
             <div class="owl-carousel owl-theme">
-                @foreach (var item in Model.AuctionProducts.Where(x=>x.Category.Type == "Real-Estate"))
+                @foreach (var item in Model.AuctionProducts.Where(x => x.Category.Type == "Real-Estate"))
                 {
-                     <div class="item">
-                    <div class="row">
-                        <div class="col-lg-5 p-0">
-                            <h3>
-                                <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">@item.Name</a>
-                            </h3>
-                            <div class="bid d-flex justify-content-around">
-                                <div class="current-bid d-flex">
-                                    <i class="flaticon-hammer"></i>
-                                    <p class="d-flex flex-column">
-                                        Current Bid
-                                        @if (item.UserAuctionProducts.Count > 0)
-                                        {
-                                            <span>$@item.UserAuctionProducts.OrderByDescending(x => x.Bid).FirstOrDefault().Bid</span>
-                                        }
-                                        else
-                                        {
-                                            <span>$0</span>
-                                        }
-                                    </p>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-lg-5 p-0">
+                                <h3>
+                                    <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">@item.Name</a>
+                                </h3>
+                                <div class="bid d-flex justify-content-around">
+                                    <div class="current-bid d-flex">
+                                        <i class="flaticon-hammer"></i>
+                                        <p class="d-flex flex-column">
+                                            Current Bid
+                                            @if (item.UserAuctionProducts.Count > 0)
+                                            {
+                                                <span>$@item.UserAuctionProducts.OrderByDescending(x => x.Bid).FirstOrDefault().Bid</span>
+                                            }
+                                            else
+                                            {
+                                                <span>$0</span>
+                                            }
+                                        </p>
+                                    </div>
+                                    <div class="buy-now-price d-flex">
+                                        <i class="flaticon-money"></i>
+                                        <p class="d-flex flex-column">
+                                            Buy Now
+                                            <span>$@item.BuyNowPrice</span>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="buy-now-price d-flex">
-                                    <i class="flaticon-money"></i>
-                                    <p class="d-flex flex-column">
-                                        Buy Now
-                                        <span>$@item.BuyNowPrice</span>
-                                    </p>
+                                <div class="time d-flex ">
+                                    <div class="countdown" data-countdown="@item.EndDate.ToString("MM.dd.yyyy HH:mm").Replace(".","/")"></div>
+                                    <span>30 Bids</span>
+                                </div>
+                                <div class="button text-center">
+                                    <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">Submit A Bid</a>
                                 </div>
                             </div>
-                            <div class="time d-flex ">
-                                <div class="countdown" data-countdown="@item.EndDate.ToString("MM.dd.yyyy HH:mm").Replace(".","/")"></div>
-                                <span>30 Bids</span>
-                            </div>
-                            <div class="button text-center">
-                                <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">Submit A Bid</a>
+                            <div class="col-lg-7">
+                                <div class="image">
+                                    <img src="~/uploads/@item.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="image">
-                                <img src="~/uploads/@item.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
+                    </div>
                 }
             </div>
         </div>

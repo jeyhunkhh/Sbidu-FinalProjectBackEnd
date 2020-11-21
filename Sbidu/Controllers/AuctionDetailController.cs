@@ -27,6 +27,9 @@ namespace Sbidu.Controllers
         [Route("auction-detail/{Id}")]
         public async Task<IActionResult> Index(int Id, AuctionDetailViewModel viewModel)
         {
+            if (Id == 0) return NotFound();
+            if (_context.AuctionProducts.Where(x => x.EndDate > DateTime.Now || x.Sold == true).FirstOrDefault(x => x.Id == Id) == null) return NotFound();
+            if (_context.AuctionProducts.FirstOrDefault(x=>x.Id != Id) == null) return NotFound();
             AuctionDetailViewModel model = new AuctionDetailViewModel
             {
                 AuctionProduct = _context.AuctionProducts.Where(x => x.EndDate > DateTime.Now)
@@ -118,7 +121,7 @@ namespace Sbidu.Controllers
                 auction.Sold = true;
                 _context.SaveChanges();
 
-            return RedirectToAction("index","winningbids");
+            return NoContent();
         }
     }
 }
