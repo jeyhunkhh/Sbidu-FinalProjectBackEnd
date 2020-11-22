@@ -250,6 +250,9 @@ namespace Sbidu.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("NoBuyer")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("Popular")
                         .HasColumnType("bit");
 

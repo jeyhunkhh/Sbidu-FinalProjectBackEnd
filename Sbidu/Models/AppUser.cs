@@ -12,7 +12,7 @@ namespace Sbidu.Models
         [MaxLength(150)]
         public string FullName { get; set; }
         [MaxLength(100)]
-        public string? Photo { get; set; }
+        public string Photo { get; set; }
         [NotMapped]
         public IFormFile Upload { get; set; }
 

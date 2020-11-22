@@ -27,6 +27,7 @@ namespace Sbidu.Models
         [Required]
         public bool Popular { get; set; }
         public bool Sold { get; set; }
+        public bool NoBuyer { get; set; }
 
         [NotMapped]
         public List<IFormFile> Upload { get; set; }
