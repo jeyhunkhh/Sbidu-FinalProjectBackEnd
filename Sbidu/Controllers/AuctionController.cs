@@ -45,8 +45,8 @@ namespace Sbidu.Controllers
                     .Include(x => x.AuctionProductGalleries)
                     .Where(x => x.CategoryId == Id)
                     .Include(x => x.UserAuctionProducts)
-                    .Where(x => x.Sold == false)
-                    .AsNoTracking().OrderBy(x => x.Id);
+                    .Where(x => x.Sold == false && x.EndDate > DateTime.Now)
+                    .AsNoTracking().OrderBy(x => x.EndDate);
 
             var pagingData = await PagingList.CreateAsync(items, pageSize, page);
 
@@ -58,7 +58,7 @@ namespace Sbidu.Controllers
                     .Include(x => x.AuctionProductGalleries)
                     .Include(x => x.UserAuctionProducts)
                     .ThenInclude(x=>x.AppUser)
-                    .Where(x => x.Sold == false)
+                    .Where(x => x.Sold == false && x.EndDate > DateTime.Now)
                     .Where(x=>x.Popular == true).ToList(),
 
                 Categories = _context.Categories.ToList()

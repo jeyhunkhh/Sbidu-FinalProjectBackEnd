@@ -1,0 +1,61 @@
+﻿@model AppUser;
+@{ 
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+}
+<div class="user-menu">
+    <div class="user">
+        <div class="image">
+            @if (Model.Photo == null)
+            {
+                <img src="~/uploads/user-1.jpg" alt="">
+            }
+            else
+            {
+                <img src="~/uploads/@Model.Photo" alt="">
+            }
+            <label for="user-photo">
+                <i class="fas fa-pencil-alt"></i>
+            </label>
+            <input type="file" id="user-photo" class="d-none">
+        </div>
+        <div class="content">
+            <h4>
+                @Model.FullName
+            </h4>
+            <span>@Model.Email</span>
+        </div>
+    </div>
+    <ul class="menu">
+        <li class="menu-item">
+            <a asp-controller="mybids" asp-action="index" class="@(controller == "MyBids" ? "active" : " " )">
+                <i class="flaticon-hammer"></i>
+                My Bids
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-controller="personalprofile" asp-action="index" class="@(controller == "PersonalProfile" ? "active" : " ")">
+                <i class="flaticon-settings"></i>
+                Personal Profile
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-controller="winningbids" asp-action="index" class="@(controller == "WinningBids" ? "active" : " ")">
+                <i class="flaticon-best-seller"></i>
+                Winning Bids
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-controller="favorites" asp-action="index" class="@(controller == "Favorites" ? "active" : " ")">
+                <i class="far fa-star"></i>
+                My Favorites
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-controller="referrals" asp-action="index" class="@(controller == "Referrals" ? "active" : " ")">
+                <i class="flaticon-shake-hand"></i>
+                Referrals
+            </a>
+        </li>
+
+    </ul>
+</div>

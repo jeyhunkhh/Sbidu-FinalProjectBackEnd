@@ -1,6 +1,6 @@
 ﻿@model List<AuctionProduct>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center wow animate__animated animate__backInUp">
     @foreach (var item in Model.Take(3))
     {
         <div class="col-lg-4 col-md-6 col-sm-10">
@@ -64,7 +64,7 @@
                     <span>@item.UserAuctionProducts.Where(x=>x.Bid > 0).Count() Bids</span>
                 </div>
                 <div class="button text-center">
-                    <a asp-controller="auction" asp-action="index" asp-route-id="@item.Id">Submit A Bid</a>
+                    <a asp-controller="auctiondetail" asp-action="index" asp-route-id="@item.Id">Submit A Bid</a>
                 </div>
             </div>
         </div>

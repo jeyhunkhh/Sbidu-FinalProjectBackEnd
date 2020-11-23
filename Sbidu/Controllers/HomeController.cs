@@ -31,21 +31,11 @@ namespace Sbidu.Controllers
                 ViewBag.User = user;
             }
 
-            var auction = _context.AuctionProducts.OrderByDescending(x=>x.EndDate)
-                                                  .Where(x => x.Sold == false)
-                                                  .Include(x => x.UserAuctionProducts).FirstOrDefault();
-
-            if (auction.EndDate < DateTime.Now)
-            {
-                var auctionEnd = auction.UserAuctionProducts.OrderByDescending(x => x.Bid).FirstOrDefault();
-                auctionEnd.SoldPrice = auctionEnd.Bid;
-            }
-
             HomeViewModel homeViewModel = new HomeViewModel
             {
                 HomePoster = _context.HomePosters.FirstOrDefault(),
                 AuctionProducts = _context.AuctionProducts
-                    .Where(x=>x.Sold == false)
+                    .Where(x=>x.Sold == false && x.EndDate > DateTime.Now)
                     .Include(x=>x.AuctionProductGalleries)
                     .Include(x => x.UserAuctionProducts)
                     .Include(x=>x.Category).ToList(),

@@ -284,6 +284,23 @@ $(document).ready(function () {
     });
   }
 
+   // wow.js //
+   function wowAnimation() {
+    wow = new WOW({
+      boxClass: "wow", // default
+      animateClass: "animated", // default
+      offset: 0, // default
+      mobile: true, // default
+      live: true, // default
+    });
+    wow.init();
+  }
+  // ----- //
+
+  $(window).on("load", function () {
+    wowAnimation();
+  });
+
 });
 
 $(window).on("load", function () {

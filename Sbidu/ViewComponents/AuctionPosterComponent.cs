@@ -23,7 +23,8 @@ namespace Sbidu.ViewComponents
                 .Include(x => x.Category)
                 .Include(x=> x.UserAuctionProducts)
                 .Where(x=>x.EndDate > DateTime.Now)
-                .Where(x => x.CategoryId == Id).ToList();
+                .Where(x => x.CategoryId == Id)
+                .OrderBy(x=>x.EndDate).ToList();
             return View(products);
         }
     }

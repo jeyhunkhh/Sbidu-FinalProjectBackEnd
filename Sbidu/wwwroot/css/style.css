@@ -2818,6 +2818,7 @@ footer .footer-bg {
 
 #dashboard .user-menu .user .image {
   width: 100px;
+  border-radius: 50%;
   margin: 0 auto 30px;
   position: relative;
 }
@@ -2825,6 +2826,7 @@ footer .footer-bg {
 #dashboard .user-menu .user .image img {
   height: 100px;
   width: 100px;
+  border-radius: 50%;
 }
 
 #dashboard .user-menu .user .image label {
@@ -2845,6 +2847,10 @@ footer .footer-bg {
 
 #dashboard .user-menu .user h4 {
   color: #37406f;
+}
+
+#dashboard .user-menu .menu li {
+  width: 100%;
 }
 
 #dashboard .user-menu .menu li a {

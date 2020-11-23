@@ -23,6 +23,7 @@ namespace Sbidu.Controllers
             _context = context;
             _userManager = userManager;
         }
+
         [Authorize()]
         [Route("auction-detail/{Id}")]
         public async Task<IActionResult> Index(int Id, AuctionDetailViewModel viewModel)
