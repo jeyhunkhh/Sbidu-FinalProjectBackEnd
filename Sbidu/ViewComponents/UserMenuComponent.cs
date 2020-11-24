@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Sbidu.Models;
@@ -23,6 +24,5 @@ namespace Sbidu.ViewComponents
 
             return View(user);
         }
-
     }
 }

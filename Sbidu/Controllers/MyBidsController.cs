@@ -33,7 +33,7 @@ namespace Sbidu.Controllers
             MyProfileViewModel model = new MyProfileViewModel
             {
                 AppUser = user,
-                UserAuctionProducts = _context.UserAuctionProducts.Where(x => x.AppUserId == user.Id)
+                UserAuctionProducts = _context.UserAuctionProducts.Where(x=>x.AppUserId == user.Id)
                                                                   .Include(x=>x.AuctionProduct)
                                                                   .ThenInclude(x=>x.AuctionProductGalleries).ToList()
             };

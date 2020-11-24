@@ -266,3 +266,4 @@ C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Views\Referrals\Index.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Views\WinningBids\Index.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\UserMenuComponent\Default.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Views\PersonalProfile\ProfilDetailsEdit.cshtml.g.cs

@@ -1,4 +1,5 @@
-﻿<!-- Breadcrumb -->
+﻿@model MyProfileViewModel
+<!-- Breadcrumb -->
 <section id="breadcrumb">
     <div class="container">
         <ul class="breadcrumb">
@@ -36,151 +37,73 @@
                                 </div>
                                 <div class="search d-flex justify-content-between">
                                     <form action="#">
-                                        <input type="text" placeholder="Item Name">
+                                        <input type="text" class="search-input" placeholder="Item Name">
                                         <button>
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </form>
-                                    <div class="sort d-flex align-items-center">
-                                        <div class="name">
-                                            <span>Sort By :</span>
-                                        </div>
-                                        <div class="sort-by">
-                                            <select class="form-control">
-                                                <option value="all">All</option>
-                                                <option value="a-z">A-Z</option>
-                                                <option value="date">Date</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="auction-item">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="~/uploads/car01.png" alt="">
-                                    </a>
-                                    <a href="#" class="star">
-                                        <i class="far fa-star"></i>
-                                    </a>
-                                    <a href="#" class="hammer">
-                                        <i class="flaticon-hammer"></i>
-                                    </a>
-                                </div>
-                                <div class="auction-content">
-                                    <h5>2020 Hyundai Elantra, Sel</h5>
-                                    <div class="bid d-flex justify-content-between">
-                                        <div class="buy-now-price d-flex">
-                                            <i class="flaticon-money"></i>
-                                            <p class="d-flex flex-column">
-                                                Sold
-                                                <span>$5000.00</span>
-                                            </p>
+                        @if (Model.AppUser.UserAuctionProducts != null)
+                        {
+                            @foreach (var item in Model.UserAuctionProducts)
+                            {
+                                if (item.AppUserId == Model.AppUser.Id && item.IsWinner == true
+                                            && item.IsWinner == true)
+                                {
+                                    <div class="col-lg-6" data-role="auction">
+                                        <div class="auction-item">
+                                            <div class="image">
+                                                <a>
+                                                    <img src="~/uploads/@item.AuctionProduct.AuctionProductGalleries.FirstOrDefault().Photo" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="auction-content">
+                                                <h5>@item.AuctionProduct.Name</h5>
+                                                <div class="bid d-flex justify-content-between">
+                                                    <div class="buy-now-price d-flex">
+                                                        <i class="flaticon-money"></i>
+                                                        <p class="d-flex flex-column">
+                                                            Sold
+                                                            @if (@item.SoldPrice == null)
+                                                            {
+                                                                <span>@item.SoldPrice</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>@item.AuctionProduct.BuyNowPrice</span>
+                                                            }
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="button text-center mt-3">
+                                                <a href="#">Contact Us</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="button text-center mt-3">
-                                    <a href="#">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="auction-item">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="~/uploads/car03.png" alt="">
-                                    </a>
-                                    <a href="#" class="star">
-                                        <i class="far fa-star"></i>
-                                    </a>
-                                    <a href="#" class="hammer">
-                                        <i class="flaticon-hammer"></i>
-                                    </a>
-                                </div>
-                                <div class="auction-content">
-                                    <h5>2019 Mercedes-Benz C, 300</h5>
-                                    <div class="bid d-flex justify-content-between">
-                                        <div class="buy-now-price d-flex">
-                                            <i class="flaticon-money"></i>
-                                            <p class="d-flex flex-column">
-                                                Sold
-                                                <span>$5000.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="button text-center mt-3">
-                                    <a href="#">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="auction-item">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="~/uploads/car04.png" alt="">
-                                    </a>
-                                    <a href="#" class="star">
-                                        <i class="far fa-star"></i>
-                                    </a>
-                                    <a href="#" class="hammer">
-                                        <i class="flaticon-hammer"></i>
-                                    </a>
-                                </div>
-                                <div class="auction-content">
-                                    <h5>2014 KIA Sorento, LX</h5>
-                                    <div class="bid d-flex justify-content-between">
-                                        <div class="buy-now-price d-flex">
-                                            <i class="flaticon-money"></i>
-                                            <p class="d-flex flex-column">
-                                                Sold
-                                                <span>$5000.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="button text-center mt-3">
-                                    <a href="#">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="auction-item">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="~/uploads/car05.png" alt="">
-                                    </a>
-                                    <a href="#" class="star">
-                                        <i class="far fa-star"></i>
-                                    </a>
-                                    <a href="#" class="hammer">
-                                        <i class="flaticon-hammer"></i>
-                                    </a>
-                                </div>
-                                <div class="auction-content">
-                                    <h5>2019 Subaru Crosstrek, Premium</h5>
-                                    <div class="bid d-flex justify-content-between">
-                                        <div class="buy-now-price d-flex">
-                                            <i class="flaticon-money"></i>
-                                            <p class="d-flex flex-column">
-                                                Sold
-                                                <span>$5000.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="button text-center mt-3">
-                                    <a href="#">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
+                                }
+
+                            }
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts{
+    <script>
+    $(".search-input").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $('div[data-role="auction"]').filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        })
+    });
+    </script>
+}

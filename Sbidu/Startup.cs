@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ReflectionIT.Mvc.Paging;
 using Sbidu.Data;
+using Sbidu.Helper;
 using Sbidu.Models;
 
 namespace Sbidu
@@ -56,6 +57,8 @@ namespace Sbidu
             services.AddPaging(options => {
                 options.ViewName = "Bootstrap4";
             });
+
+            services.AddSingleton<IFileManager, FileManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

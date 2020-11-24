@@ -71,7 +71,8 @@ namespace Sbidu.Controllers
             {
                 FullName = register.FullName,
                 Email = register.Email,
-                UserName = register.UserName
+                UserName = register.UserName,
+                Photo = "user-1.jpg"
             };
 
             IdentityResult identityResult = await _userManager.CreateAsync(user, register.Password);
