@@ -270,3 +270,5 @@ C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Views\PersonalProfile\EmailEdit.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Views\PersonalProfile\PasswordEdit.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\bin\Debug\netcoreapp3.1\CryptoHelper.dll
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
