@@ -41,10 +41,18 @@
                             <ul>
                                 <li>
                                     <div class="info">
-                                        Name
+                                        Fullname
                                     </div>
                                     <div class="info-value">
                                         @Model.FullName
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="info">
+                                        Username
+                                    </div>
+                                    <div class="info-value">
+                                        @Model.UserName
                                     </div>
                                 </li>
                                 <li>
@@ -62,7 +70,7 @@
                         <div class="details">
                             <div class="header d-flex justify-content-between">
                                 <h3>Email Address</h3>
-                                <a href="#">
+                                <a asp-action="EmailEdit" asp-route-id="@Model.Id">
                                     <i class="flaticon-edit"></i>
                                     Edit
                                 </a>
@@ -83,7 +91,7 @@
                         <div class="details">
                             <div class="header d-flex justify-content-between">
                                 <h3>Security</h3>
-                                <a href="#">
+                                <a asp-action="PasswordEdit" asp-route-id="@Model.Id">
                                     <i class="flaticon-edit"></i>
                                     Edit
                                 </a>

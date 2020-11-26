@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5zwaV8pmUK8aG+hVdX3uIoVpHnsKCAwul5zaIkwGukxCMh0/BP25cSoOxBL8KomYfPdADrk4xTcl1cwP/YYsGw==",
+  "dgSpecHash": "L61nOK+jEPPnv4C889L8B81vHHhbgKUKTZCpY6LXhd6t4F910vz9EdhEhLx/LzgHb11D+Oxw3N6ns+zWlfEtuw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ceyhun\\Desktop\\Sbidu-FinalProjectBackEnd\\AuctionWorkerService\\AuctionWorkerService.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ceyhun\\.nuget\\packages\\cryptohelper\\3.0.2\\cryptohelper.3.0.2.nupkg.sha512",
     "C:\\Users\\Ceyhun\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.0.0\\microsoft.aspnetcore.authorization.3.0.0.nupkg.sha512",
     "C:\\Users\\Ceyhun\\.nuget\\packages\\microsoft.aspnetcore.components\\3.0.0\\microsoft.aspnetcore.components.3.0.0.nupkg.sha512",
     "C:\\Users\\Ceyhun\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\3.0.0\\microsoft.aspnetcore.components.analyzers.3.0.0.nupkg.sha512",

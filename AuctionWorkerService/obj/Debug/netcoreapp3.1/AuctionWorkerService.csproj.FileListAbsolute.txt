@@ -172,3 +172,4 @@ C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\AuctionWorkerService\bin\Debug
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\AuctionWorkerService\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\AuctionWorkerService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\AuctionWorkerService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.ServiceProcess.ServiceController.dll
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\AuctionWorkerService\bin\Debug\netcoreapp3.1\CryptoHelper.dll

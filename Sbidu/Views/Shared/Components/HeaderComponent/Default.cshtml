@@ -25,14 +25,7 @@
                         <li>@ViewBag.FullName</li>
                     </ul>
                     <button class="user-profile ml-3">
-                        @if (ViewBag.Photo == null)
-                        {
-                            <img src="~/uploads/user-1.jpg" alt="">
-                        }
-                        else
-                        {
                             <img src="~/uploads/@ViewBag.Photo" alt="">
-                        }
                     </button>
                     <ul class="list">
                         <li>

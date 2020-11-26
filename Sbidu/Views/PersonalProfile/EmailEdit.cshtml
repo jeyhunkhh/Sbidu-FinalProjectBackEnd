@@ -1,0 +1,57 @@
+﻿@model AppUser
+<!-- Breadcrumb -->
+<section id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="index.html">
+                    Home
+                    <i class="flaticon-right-arrow"></i>
+                </a>
+            </li>
+            <li>
+                <a href="index.html">
+                    Auction
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="bg-image" style="background-image: url(/uploads/hero-bg.png);">
+
+    </div>
+</section>
+<!-- End Breadcrumb -->
+<section id="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <vc:user-menu-component></vc:user-menu-component>
+            </div>
+            <div class="col-lg-8">
+                <div class="details">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="mb-3">
+                                Personal Details
+                            </h3>
+                            <form method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Email">Email</label>
+                                    <input asp-for="Email" type="email" class="form-control">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <partial name="_ValidationScripts" />
+}
+

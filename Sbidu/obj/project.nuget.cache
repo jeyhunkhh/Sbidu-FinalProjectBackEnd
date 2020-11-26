@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NDGW7wLbrtU2VOjwClx5IJfNI0v1oTR+4M3wa0kgdry0MhobIrx+iLs0aR/ivcUnOHbmwcQlgx3cW1lKgQwzog==",
+  "dgSpecHash": "+LHaEm1HsWWWPAKEd6w5l/yYyeOMTh2uctQzbtvUcCy6K/cf6EWqdDmT2O4X9FNHY1mcKld6mbZuvB2aCV5Vsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ceyhun\\Desktop\\Sbidu-FinalProjectBackEnd\\Sbidu\\Sbidu.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ceyhun\\.nuget\\packages\\cryptohelper\\3.0.2\\cryptohelper.3.0.2.nupkg.sha512",
     "C:\\Users\\Ceyhun\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ceyhun\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.0.0\\microsoft.aspnetcore.authorization.3.0.0.nupkg.sha512",
     "C:\\Users\\Ceyhun\\.nuget\\packages\\microsoft.aspnetcore.components\\3.0.0\\microsoft.aspnetcore.components.3.0.0.nupkg.sha512",
