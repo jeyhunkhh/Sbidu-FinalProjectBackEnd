@@ -10,12 +10,15 @@ namespace Sbidu.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AccountController(UserManager<AppUser> userManager,
-                                 SignInManager<AppUser> signInManager)
+                                 SignInManager<AppUser> signInManager,
+                                 RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         [Route("login")]
@@ -86,6 +89,7 @@ namespace Sbidu.Controllers
                 return View(register);
             }
 
+            await _userManager.AddToRoleAsync(user, "Member");
             await _signInManager.SignInAsync(user, true);
             return RedirectToAction("Index","Home");
         }
@@ -95,5 +99,6 @@ namespace Sbidu.Controllers
             _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
     }
 }

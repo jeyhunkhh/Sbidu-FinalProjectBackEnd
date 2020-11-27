@@ -12,7 +12,29 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 1 "C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\Areas\Admin\Views\_ViewImports.cshtml"
+using Sbidu;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\Areas\Admin\Views\_ViewImports.cshtml"
+using Sbidu.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\Areas\Admin\Views\_ViewImports.cshtml"
+using Sbidu.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7cce2020facef40d954d74a3d26892304eb623fe", @"/Areas/Admin/Views/Home/Index.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c87a4807efa744515cee4589c2e8448ea4a51a18", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

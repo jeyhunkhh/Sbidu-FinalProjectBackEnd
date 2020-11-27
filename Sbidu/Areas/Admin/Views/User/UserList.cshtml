@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mx-3">
+    <div class="d-flex justify-content-center align-items-center"><h2>List of users</h2></div>
+
+    <table class="table table-striped mt-5">
+        @foreach (var user in Model)
+        {
+            <tr class="d-flex justify-content-between align-items-center">
+                <td>@user.Email</td>
+                <td>
+                    <a class="btn btn-sm btn-primary mr-1" asp-action="Edit" asp-route-userid="@user.Id">Right of entry</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+
+
+

@@ -1,0 +1,22 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<div class="row mx-3">
+    <div class="col-lg-6">
+        <form method="post">
+            <div class="form-group">
+                <label for="name">New role</label>
+                <input name="name" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a asp-action="Index" class="btn btn-outline-secondary ml-3">Return to Back</a>
+        </form>
+    </div>
+</div>
+
+
