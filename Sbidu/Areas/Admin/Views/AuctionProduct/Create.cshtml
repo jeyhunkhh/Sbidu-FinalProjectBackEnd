@@ -1,0 +1,113 @@
+﻿@model AuctionProductCreateViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section>
+    <container>
+        <row>
+            <div class="px-4">
+                <h1 class="text-success">Create</h1>
+
+                <h4>Auction</h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        <form asp-action="Create" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label for="Categories">Category</label>
+                                <select asp-for="CategoryId" class="form-control" id="Categories">
+                                    <option value="0" selected disabled>Select Category</option>
+                                    @foreach (var item in ViewBag.Categories)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="About" class="control-label"></label>
+                                <textarea asp-for="About" class="form-control"></textarea>
+                                <span asp-validation-for="About" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="BuyNowPrice" class="control-label">Buy Now Price</label>
+                                <input asp-for="BuyNowPrice" min="1" class="form-control" />
+                                <span asp-validation-for="BuyNowPrice" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="StartPrice" class="control-label">Start Price</label>
+                                <input asp-for="StartPrice" min="1" class="form-control" />
+                                <span asp-validation-for="StartPrice" class="text-danger"></span>
+                            </div>
+                            <div class="form-group"> 
+                                <label asp-for="EndDate" class="control-label">End Date</label>
+                                <input asp-for="EndDate" class="form-control" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                            <div class="custom-file my-3">
+                                <input asp-for="Uploads" multiple class="custom-file-input gallery-photo-add">
+                                <label asp-for="Uploads" class="custom-file-label">Choose file</label>
+                                <span asp-validation-for="Uploads" class="text-danger"></span>
+                            </div>
+                            <div class="form-group form-check mt-2 mb-4">
+                                <input asp-for="Popular" class="form-check-input">
+                                <label asp-for="Popular" class="form-check-label">Popular</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 gallery">
+
+                    </div>
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+                </div>
+
+            </div>
+        </row>
+    </container>
+</section>
+
+@section Scripts{
+    <partial name="_ValidationScripts" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(function () {
+            // Multiple images preview in browser
+            var imagesPreview = function (input, placeToInsertImagePreview) {
+               
+                if (input.files) {
+                    var filesAmount = input.files.length;
+                    
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (event) {
+                            $($.parseHTML('<img class="mb-3 image-add">')).attr('src', event.target.result).css("max-width","100%").appendTo(placeToInsertImagePreview);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+                if ($(".gallery .image-add").length) {
+                    $(".image-add").remove();
+                }
+            };
+
+            $('.gallery-photo-add').on('change', function () {
+                imagesPreview(this, 'div.gallery');
+            });
+        });
+    </script>
+}
