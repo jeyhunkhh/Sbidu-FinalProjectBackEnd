@@ -279,3 +279,6 @@ C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\UserList.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Edit.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AuctionProduct\Create.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AuctionProduct\Index.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AuctionProduct\Details.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AuctionProduct\Delete.cshtml.g.cs

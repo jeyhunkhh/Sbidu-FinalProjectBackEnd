@@ -93,11 +93,74 @@ namespace Sbidu.Areas.Admin.Controllers
                     _context.SaveChanges();
                 }
 
-                return View();
+                return RedirectToAction("index");
             }
 
             return View(model);
         }
 
+        public IActionResult Details(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+
+            var auctionProduct = _context.AuctionProducts.Include(x => x.AuctionProductGalleries)
+                                                         .Include(x => x.Category)
+                                                         .Include(x => x.UserAuctionProducts)
+                                                         .ThenInclude(x => x.AppUser).FirstOrDefault(x=>x.Id == Id);
+
+            if (auctionProduct == null)
+            {
+                return NotFound();
+            }
+
+            return View(auctionProduct);
+        }
+
+        public IActionResult Delete(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+
+            var auctionProduct = _context.AuctionProducts.Include(x => x.AuctionProductGalleries)
+                                                         .Include(x => x.Category)
+                                                         .Include(x => x.UserAuctionProducts)
+                                                         .ThenInclude(x => x.AppUser).FirstOrDefault(x => x.Id == Id);
+
+            if (auctionProduct == null)
+            {
+                return NotFound();
+            }
+
+            return View(auctionProduct);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int Id)
+        {
+            var auctionProduct = _context.AuctionProducts.Include(x => x.AuctionProductGalleries)
+                                                         .Include(x => x.Category)
+                                                         .Include(x => x.UserAuctionProducts)
+                                                         .ThenInclude(x => x.AppUser).FirstOrDefault(x => x.Id == Id);
+
+            foreach (var item in auctionProduct.AuctionProductGalleries)
+            {
+                _fileManager.Delete(item.Photo);
+            }
+
+            foreach (var item in auctionProduct.UserAuctionProducts)
+            {
+                _context.UserAuctionProducts.Remove(item);
+            }
+
+            _context.AuctionProducts.Remove(auctionProduct);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

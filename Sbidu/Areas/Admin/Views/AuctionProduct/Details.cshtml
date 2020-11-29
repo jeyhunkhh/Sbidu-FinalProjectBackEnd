@@ -1,0 +1,88 @@
+﻿@model AuctionProduct
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section>
+    <container>
+        <row>
+            <div class="px-4">
+                <div>
+                    <h1 class="text-warning">Details</h1>
+
+                    <h4>Auction product</h4>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.AuctionProductGalleries.FirstOrDefault().Photo)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @foreach (var item in Model.AuctionProductGalleries)
+                            {
+                                <img src="~/uploads/@item.Photo" width="200" class="mb-1" alt="Alternate Text" />
+                            }
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.About)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.About)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Category)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Category.Name)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Popular)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Popular)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Buy Now Price
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.BuyNowPrice)$
+                        </dd>
+                        <dt class="col-sm-2">
+                            Start Price
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.StartPrice)$
+                        </dd>
+                        @if (Model.UserAuctionProducts.Any(x => x.IsWinner == true))
+                        {
+                            <dt class="col-sm-2">
+                                Sold User
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.UserAuctionProducts.Where(x => x.IsWinner == true).FirstOrDefault().AppUser.FullName)
+                            </dd>
+                            <dt class="col-sm-2">
+                                Sold Price
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.UserAuctionProducts.Where(x => x.IsWinner == true).FirstOrDefault().SoldPrice)$
+                            </dd>
+                        }
+                    </dl>
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+                </div>
+            </div>
+        </row>
+    </container>
+</section>
+
+
