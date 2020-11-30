@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section>
+    <container>
+        <row>
+            <div class="px-4">
+                <h1 class="text-primary">Contact</h1>
+
+                <p class="d-flex justify-content-end">
+                    <a asp-action="Create" class="text-success pr-3"><i class="fas fa-plus-circle" style="font-size:25px"></i></a>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Subtitle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Photo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Content)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Subtitle)
+                            </td>
+                            <td>
+                                <img src="~/uploads/@item.Photo" width="100" alt="Alternate Text" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Content)
+                            </td>
+                            <td class="d-flex flex-column">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="text-primary"><i class="far fa-edit"></i></a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="text-warning"><i class="fas fa-info-circle"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </row>
+    </container>
+</section>

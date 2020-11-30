@@ -37,12 +37,12 @@ namespace Sbidu.Helper
                 };
 
                 _context.UserAuctionProducts.Add(userAuction);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             else
             {
                 isFavorite.IsFavorit = false;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
             return true;

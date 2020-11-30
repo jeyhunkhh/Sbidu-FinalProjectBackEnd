@@ -18,7 +18,6 @@ namespace Sbidu.Controllers
         }
 
         [HttpGet]
-        [Route("contact")]
         public IActionResult Index()
         {
             ContactViewModel contact = new ContactViewModel
@@ -29,7 +28,6 @@ namespace Sbidu.Controllers
         }
 
         [HttpPost]
-        [Route("contact")]
         public IActionResult Send(ContactViewModel model)
         {
             if (ModelState.IsValid)
