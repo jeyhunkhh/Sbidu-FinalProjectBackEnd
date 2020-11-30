@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Sbidu.Data;
 using Sbidu.Helper;
 using Sbidu.Models;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,25 +12,25 @@ namespace Sbidu.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
-    public class CategoryController : Controller
+    public class HomePosterController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly IFileManager _fileManager;
 
-        public CategoryController(ApplicationDbContext context,
+        public HomePosterController(ApplicationDbContext context,
                                      IFileManager fileManager)
         {
             _context = context;
             _fileManager = fileManager;
         }
 
-        // GET: Control/HomeHeaders
+        // GET: Control/HomePoster
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            return View(await _context.HomePosters.ToListAsync());
         }
 
-        // GET: Control/HomeHeaders/Details/5
+        // GET: Control/HomePoster/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -40,44 +38,44 @@ namespace Sbidu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var homePoster = await _context.HomePosters
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (homePoster == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(homePoster);
         }
 
-        // GET: Control/HomeHeaders/Create
+        // GET: Control/HomePoster/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Control/HomeHeaders/Create
+        // POST: Control/HomePoster/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Upload,Id,Type,Icon")] Category categories)
+        public async Task<IActionResult> Create([Bind("Title,Upload,Id,Subtitle,Text")] HomePoster homePoster)
         {
-            if (categories.Upload == null)
+            if (homePoster.Upload == null)
             {
                 ModelState.AddModelError("Upload", "The Photo field is required.");
             }
 
             if (ModelState.IsValid)
             {
-                var fileName = _fileManager.Upload(categories.Upload);
-                categories.Photo = fileName;
-                _context.Add(categories);
+                var fileName = _fileManager.Upload(homePoster.Upload);
+                homePoster.Photo = fileName;
+                _context.Add(homePoster);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(categories);
+            return View(homePoster);
         }
 
-        // GET: Control/HomeHeaders/Edit/5
+        // GET: Control/HomePoster/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,55 +83,55 @@ namespace Sbidu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var homePoster = await _context.HomePosters.FindAsync(id);
+            if (homePoster == null)
             {
                 return NotFound();
             }
-            return View(category);
+            return View(homePoster);
         }
 
-        // POST: Control/HomeHeaders/Edit/5
+        // POST: Control/HomePoster/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Photo,Upload,Id,Type,Icon")] Category categories)
+        public async Task<IActionResult> Edit(int id, [Bind("Title,Photo,Upload,Id,Subtitle,Text")] HomePoster homePoster)
         {
-            if (id != categories.Id)
+            if (id != homePoster.Id)
             {
                 return NotFound();
             }
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                try
                 {
-                    try
+                    if (homePoster.Upload != null)
                     {
-                    if (categories.Upload != null)
-                    {
-                        var oldFile = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", categories.Photo);
+                        var oldFile = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", homePoster.Photo);
                         _fileManager.Delete(oldFile);
-                        var fileName = _fileManager.Upload(categories.Upload);
-                        categories.Photo = fileName;
+                        var fileName = _fileManager.Upload(homePoster.Upload);
+                        homePoster.Photo = fileName;
                     }
-                        _context.Update(categories);
-                        await _context.SaveChangesAsync();  
-                    }
-                    catch (DbUpdateConcurrencyException)
-                    {
-                        if (!CategoriesExists(categories.Id))
-                        {
-                            return NotFound();
-                        }
-                        else
-                        {
-                            throw;
-                        }
-                    }
-                    return RedirectToAction(nameof(Index));
+                    _context.Update(homePoster);
+                    await _context.SaveChangesAsync();
                 }
-            
-            return View(categories);
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!HomePosterExists(homePoster.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(homePoster);
         }
 
-        // GET: Control/HomeHeaders/Delete/5
+        // GET: Control/HomePoster/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,38 +139,38 @@ namespace Sbidu.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var homeHeader = await _context.Categories
+            var homePoster = await _context.HomePosters
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (homeHeader == null)
+            if (homePoster == null)
             {
                 return NotFound();
             }
 
-            return View(homeHeader);
+            return View(homePoster);
         }
 
-        // POST: Control/HomeHeaders/Delete/5
+        // POST: Control/HomePoster/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
+            var homePoster = await _context.HomePosters.FindAsync(id);
             try
             {
-                _fileManager.Delete(category.Photo);
+                _fileManager.Delete(homePoster.Photo);
             }
             catch (FileNotFoundException)
             {
-                _context.Categories.Remove(category);
+                _context.HomePosters.Remove(homePoster);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            _context.Categories.Remove(category);
+            _context.HomePosters.Remove(homePoster);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoriesExists(int id)
+        private bool HomePosterExists(int id)
         {
             return _context.Categories.Any(e => e.Id == id);
         }

@@ -1,0 +1,73 @@
+﻿@model HomePoster
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section>
+    <container>
+        <row>
+            <div class="px-4">
+                <h1 class="text-success">Create</h1>
+
+                <h4>Home Poster</h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        <form asp-action="Create" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Title" class="control-label"></label>
+                                <input asp-for="Title" class="form-control" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Subtitle" class="control-label"></label>
+                                <input asp-for="Subtitle" class="form-control" />
+                                <span asp-validation-for="Subtitle" class="text-danger"></span>
+                            </div>
+                            <div class="custom-file my-3">
+                                <input asp-for="Upload" class="custom-file-input">
+                                <label asp-for="Upload" class="custom-file-label">Choose file</label>
+                                <span asp-validation-for="Upload" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Text" class="control-label"></label>
+                                <textarea asp-for="Text" class="form-control"></textarea>
+                                <span asp-validation-for="Text" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 ">
+                        <img class="image-preview img-fluid mt-4" />
+                    </div>
+                </div>
+                <div>
+                    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+                </div>
+
+            </div>
+        </row>
+    </container>
+</section>
+
+@section Scripts{
+    <partial name="_ValidationScripts" />
+
+    <script>
+        $(document).ready(function () {
+            $("#Upload").change(function () {
+                var file = this.files[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function (e) {
+                    $(".image-preview").attr("src", e.target.result);
+                };
+                fileReader.readAsDataURL(file, "UTF-8");
+            });
+        });
+    </script>
+}
+

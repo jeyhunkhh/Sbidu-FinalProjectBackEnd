@@ -314,3 +314,8 @@ C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Contact\Create.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Contact\Edit.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Contact\Delete.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePoster\Index.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePoster\Details.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePoster\Create.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePoster\Edit.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePoster\Delete.cshtml.g.cs
