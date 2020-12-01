@@ -1,0 +1,58 @@
+﻿@model Team
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section>
+    <container>
+        <row>
+            <div class="px-4">
+                <div>
+                    <h1 class="text-warning">Details</h1>
+
+                    <h4>
+                        Team
+                    </h4>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Fullname)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Fullname)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Facebook)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Facebook)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Instagram)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Instagram)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Twitter)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Twitter)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Photo)
+                        </dt>
+                        <dd class="col-sm-10">
+                            <img src="~/uploads/@Model.Photo" width="400" alt="Alternate Text" />
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.Id">Edit</a> |
+                    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+                </div>
+            </div>
+        </row>
+    </container>
+</section>

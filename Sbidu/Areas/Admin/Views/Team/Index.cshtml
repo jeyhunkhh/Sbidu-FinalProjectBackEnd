@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Team>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section>
+    <container>
+        <row>
+            <div class="px-4">
+                <h1 class="text-primary">Team</h1>
+
+                <p class="d-flex justify-content-end">
+                    <a asp-action="Create" class="text-success pr-3"><i class="fas fa-plus-circle" style="font-size:25px"></i></a>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Fullname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Facebook)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Instagram)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Twitter)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Photo)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fullname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Facebook)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Instagram)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Twitter)
+                            </td>
+                            <td>
+                                <img src="~/uploads/@item.Photo" width="100" alt="Alternate Text" />
+                            </td>
+                            <td class="d-flex flex-column">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="text-primary"><i class="far fa-edit"></i></a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="text-warning"><i class="fas fa-info-circle"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </row>
+    </container>
+</section>
+
+
