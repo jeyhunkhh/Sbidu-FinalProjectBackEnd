@@ -59,7 +59,7 @@
                                                 </a>
                                                 @if (User.Identity.IsAuthenticated)
                                                 {
-                                                    <a asp-controller="Home" asp-action="AddToWishlist" asp-route-id="@item.Id" class="star">
+                                                    <a asp-controller="Favorites" asp-action="AddToWishlist" asp-route-id="@item.AuctionProductId" class="star">
 
                                                         @if (item.AuctionProduct.UserAuctionProducts.Where(x => x.AppUserId == Model.AppUser.Id).Any(x => x.IsFavorit == true))
                                                         {

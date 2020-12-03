@@ -25,7 +25,6 @@ namespace Sbidu.Controllers
         }
 
         [Authorize()]
-        [Route("favorites")]
         public async Task<IActionResult> Index()
         {
 
@@ -34,12 +33,22 @@ namespace Sbidu.Controllers
             MyProfileViewModel model = new MyProfileViewModel
             {
                 AppUser = user,
+                AuctionProduct = _context.AuctionProducts.ToList(),
                 UserAuctionProducts = _context.UserAuctionProducts.Where(x => x.AppUserId == user.Id)
                                                                   .Include(x => x.AuctionProduct)
                                                                   .ThenInclude(x => x.AuctionProductGalleries).ToList()
             };
 
             return View(model);
+        }
+
+        public async Task<IActionResult> AddToWishlist(int Id)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            await Helper.AddFavorites.AddFavorite(Id, _context, user);
+
+            return RedirectToAction("Index");
         }
     }
 }

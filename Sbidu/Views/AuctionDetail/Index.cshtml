@@ -150,7 +150,7 @@
                                     <img src="~/uploads/icon1.png" alt="">
                                 </div>
                                 <div class="content">
-                                    <div class="timer" data-to="61" data-speed="5000"></div>
+                                    <div class="timer" data-to="@Model.UserAuctionProducts.Where(x=>x.Bid > 0).Count()" data-speed="1000"></div>
                                     <span>Active Bids</span>
                                 </div>
                             </div>
@@ -159,8 +159,8 @@
                                     <img src="~/uploads/icon2.png" alt="">
                                 </div>
                                 <div class="content">
-                                    <div class="timer" data-to="203" data-speed="5000"></div>
-                                    <span>Watching</span>
+                                    <div class="timer" data-to="@Model.UserAuctionProducts.Where(x=>x.IsFavorit == true).Count()" data-speed="1000"></div>
+                                    <span>Favorites</span>
                                 </div>
                             </div>
                             <div class="item d-flex">
@@ -168,7 +168,7 @@
                                     <img src="~/uploads/icon3.png" alt="">
                                 </div>
                                 <div class="content">
-                                    <div class="timer" data-to="83" data-speed="5000"></div>
+                                    <div class="timer" data-to="@Model.UserAuctionProducts.Where(x=>x.Bid > 0).Count()" data-speed="1000"></div>
                                     <span>Total Bids</span>
                                 </div>
                             </div>
@@ -271,7 +271,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model.AuctionProduct.UserAuctionProducts)
+                            @foreach (var item in Model.AuctionProduct.UserAuctionProducts.OrderByDescending(x=>x.AddDate))
                             {
                                 if (item.Bid > 0)
                                 {

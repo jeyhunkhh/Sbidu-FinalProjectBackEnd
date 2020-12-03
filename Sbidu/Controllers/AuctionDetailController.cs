@@ -38,6 +38,7 @@ namespace Sbidu.Controllers
                                          .Include(x => x.UserAuctionProducts)
                                          .ThenInclude(x => x.AppUser)
                                          .FirstOrDefault(x => x.Id == Id),
+                UserAuctionProducts = _context.UserAuctionProducts.Where(x=>x.AuctionProductId == Id).ToList(),
                 Faq = _context.Faqs.ToList()
             };
 

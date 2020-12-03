@@ -10,7 +10,7 @@ namespace Sbidu.ViewModels
     {
         public AuctionProduct AuctionProduct { get; set; }
         public List<Faq> Faq { get; set; }
-
+        public List<UserAuctionProduct> UserAuctionProducts { get; set; }
         public int Bid { get; set; }
     }
 }

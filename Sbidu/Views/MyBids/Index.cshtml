@@ -40,7 +40,7 @@
                                         <img src="~/uploads/bid01.png" class="img-fluid" alt="">
                                     </div>
                                     <div class="content">
-                                        <div class="timer" data-to="80" data-speed="5000"></div>
+                                        <div class="timer" data-to="@Model.UserAuctionProducts.Where(x=>x.AuctionProduct.Sold == false).Where(x=>x.Bid>0).Count()" data-speed="3000"></div>
                                         <span>Active Bids</span>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                         <img src="~/uploads/bid02.png" class="img-fluid" alt="">
                                     </div>
                                     <div class="content">
-                                        <div class="timer" data-to="15" data-speed="5000"></div>
+                                        <div class="timer" data-to="@Model.UserAuctionProducts.Where(x=>x.IsWinner == true).Count()" data-speed="3000"></div>
                                         <span>Items Won</span>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                         <img src="~/uploads/bid03.png" class="img-fluid" alt="">
                                     </div>
                                     <div class="content">
-                                        <div class="timer" data-to="115" data-speed="5000"></div>
+                                        <div class="timer" data-to="@Model.UserAuctionProducts.Where(x=>x.AuctionProduct.Sold == false).Where(x=>x.IsFavorit == true).Count()" data-speed="3000"></div>
                                         <span>Favorites</span>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                                         </a>
                                                         @if (User.Identity.IsAuthenticated)
                                                         {
-                                                            <a asp-controller="Home" asp-action="AddToWishlist" asp-route-id="@item.Id" class="star">
+                                                            <a asp-controller="Home" asp-action="AddToWishlist" asp-route-id="@item.AuctionProductId" class="star">
 
                                                                 @if (item.AuctionProduct.UserAuctionProducts.Where(x => x.AppUserId == Model.AppUser.Id).Any(x => x.IsFavorit == true))
                                                                 {
