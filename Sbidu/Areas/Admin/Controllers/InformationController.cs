@@ -21,13 +21,13 @@ namespace Sbidu.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Control/HomeBlogs
+        // GET: Control/Information
         public async Task<IActionResult> Index()
         {
             return View(await _context.Settings.ToListAsync());
         }
 
-        // GET: Control/HomeBlogs/Details/5
+        // GET: Control/Information/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,13 +45,13 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(setting);
         }
 
-        // GET: Control/HomeBlogs/Create
+        // GET: Control/Information/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Control/HomeBlogs/Create
+        // POST: Control/Information/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Email,Phone,FaxPhone,Address")] Setting setting)
@@ -65,7 +65,7 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(setting);
         }
 
-        // GET: Control/HomeBlogs/Edit/5
+        // GET: Control/Information/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,7 +81,7 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(setting);
         }
 
-        // POST: Control/HomeBlogs/Edit/5
+        // POST: Control/Information/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Email,Phone,FaxPhone,Address")] Setting setting)
@@ -114,7 +114,7 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(setting);
         }
 
-        // GET: Control/HomeBlogs/Delete/5
+        // GET: Control/Information/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,7 +132,7 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(setting);
         }
 
-        // POST: Control/HomeBlogs/Delete/5
+        // POST: Control/Information/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

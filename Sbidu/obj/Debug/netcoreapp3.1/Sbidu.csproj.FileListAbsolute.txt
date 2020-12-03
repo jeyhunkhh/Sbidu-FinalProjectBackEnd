@@ -334,3 +334,5 @@ C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Team\Create.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Team\Edit.cshtml.g.cs
 C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Team\Delete.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Message\Index.cshtml.g.cs
+C:\Users\Ceyhun\Desktop\Sbidu-FinalProjectBackEnd\Sbidu\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Message\Details.cshtml.g.cs

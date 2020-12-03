@@ -26,13 +26,13 @@ namespace Sbidu.Areas.Admin.Controllers
             _fileManager = fileManager;
         }
 
-        // GET: Control/Contact
+        // GET: Control/Team
         public async Task<IActionResult> Index()
         {
             return View(await _context.Teams.ToListAsync());
         }
 
-        // GET: Control/Contact/Details/5
+        // GET: Control/Team/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,13 +50,13 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(team);
         }
 
-        // GET: Control/Contact/Create
+        // GET: Control/Team/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Control/Contact/Create
+        // POST: Control/Team/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Fullname,Upload,Id,Facebook,Instagram,Twitter")] Team team)
@@ -77,7 +77,7 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(team);
         }
 
-        // GET: Control/Contact/Edit/5
+        // GET: Control/Team/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,7 +93,7 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(team);
         }
 
-        // POST: Control/Contact/Edit/5
+        // POST: Control/Team/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Fullname,Upload,Photo,Id,Facebook,Instagram,Twitter")] Team team)
@@ -133,7 +133,7 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(team);
         }
 
-        // GET: Control/Contact/Delete/5
+        // GET: Control/Team/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,7 +151,7 @@ namespace Sbidu.Areas.Admin.Controllers
             return View(team);
         }
 
-        // POST: Control/Contact/Delete/5
+        // POST: Control/Team/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
