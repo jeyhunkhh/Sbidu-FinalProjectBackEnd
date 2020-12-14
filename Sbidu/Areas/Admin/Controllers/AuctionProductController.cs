@@ -32,7 +32,8 @@ namespace Sbidu.Areas.Admin.Controllers
             var auctionProduct = _context.AuctionProducts.Include(x => x.AuctionProductGalleries)
                                                          .Include(x => x.Category)
                                                          .Include(x => x.UserAuctionProducts)
-                                                         .ThenInclude(x => x.AppUser).ToList();
+                                                         .ThenInclude(x => x.AppUser)
+                                                         .OrderByDescending(x=>x.Id).ToList();
             return View(auctionProduct);
         }
 
